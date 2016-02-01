@@ -1,0 +1,40 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-01-26T03:00:57+01:00
+
+====== Intall-OpenStack Kilo on CentOS7-Basic Enviroment ======
+Created Tuesday 26 January 2016
+
+https://www.youtube.com/watch?v=akWkKV13K8I
+https://www.youtube.com/watch?v=QGPeGdAPJXs
+
+===== Preliminary =====
+
+- Create 3 VM (Controller, Compute and Network Node) using CentOS 7 Minimal
+
+- Use CD Installer CentOS-7-x86_64-Minimal-1503-01.iso. The ISO file could be downloaded at this link : 
+	http://kambing.ui.ac.id/iso/centos/7.1.1503/isos/x86_64/CentOS-7-x86_64-Minimal-1503-01.iso 
+		or
+	http://mirror0.babylon.network/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1511.iso 
+
+- Minimum requirement for the system :
+	http://docs.openstack.org/kilo/install-guide/install/yum/content/ch_overview.html
+Contoller Node : 
+	1  CPU
+	8 GB RAM 
+	100 GB Harddisk
+	1 NIC
+
+sudo virt-install --name=controller --disk path=/home/qemu/images/controller.img,size=10 --ram=2048 --os-type=linux --os-variant=rhel6 --network bridge:br0 --nographics --cdrom=/tmp/CentOS-7-x86_64-Minimal-1511.iso
+
+Compue Node:	
+	2 CPU
+	8 GB RAM
+	100 GB Harddisk
+	 2 NIC
+
+Network Node	
+	1 CPU
+	2 MB RAM
+	50 GB Harddisk
+	3 NIC

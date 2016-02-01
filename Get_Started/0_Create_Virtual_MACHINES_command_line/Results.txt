@@ -1,0 +1,118 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-01-26T16:16:25+01:00
+
+====== Results ======
+Created Tuesday 26 January 2016
+
+===== Create Virtual MACHINE =====
+
+		//nano /etc/sysconfig/network-scripts/ifcfg-eth0//
+			DEVICE=eth0
+			ONBOOT=yes
+			BRIDGE=br0
+		nano /etc/sysconfig/network-scripts/ifcfg-br0
+			DEVICE=br0
+			BOOTPROTO=static
+			ONBOOT=yes
+			NETWORK=10.142.0.0
+			NETMASK=255.255.0.0
+			TYPE=Bridge
+			IPADDR=10.142.0.27
+			USERCTL=no
+		[[+service network restart]]
+		ip addr show eth0
+			2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast qlen 1000
+				link/ether 00:1b:21:57:55:dc brd ff:ff:ff:ff:ff:ff
+				inet6 fe80::21b:21ff:fe57:55dc/64 scope link
+				   valid_lft forever preferred_lft forever
+		ip addr show br0
+			16: br0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue
+				link/ether 00:1b:21:57:55:dc brd ff:ff:ff:ff:ff:ff
+				inet 10.142.0.27/16 brd 10.142.255.255 scope global br0
+				inet6 fe80::21b:21ff:fe57:55dc/64 scope link
+				   valid_lft forever preferred_lft forever
+		brctl show
+			bridge name     bridge id               STP enabled     interfaces
+			br0             8000.001b215755dc       no              eth0
+			br1             8000.001b215755dd       no              eth1
+			br3             8000.003048bf5f67       no              eth3
+			br4             8000.000000000000       no
+			virbr0          8000.000000000000       yes
+
+[samer@node027 ~]$ sudo iptables -I FORWARD -m physdev --physdev-is-bridged -j ACCEPT
+[samer@node027 ~]$ sudo service iptables save
+	Saving firewall rules to /etc/sysconfig/iptables:          [  OK  ]
+[samer@node027 ~]$ sudo service iptables restart
+	Flushing firewall rules:                                   [  OK  ]
+	Setting chains to policy ACCEPT: filter                    [  OK  ]
+	Unloading iptables modules:                                [  OK  ]
+	Applying iptables firewall rules:                          [  OK  ]
+	Loading additional iptables modules: ip_conntrack_netbios_n[  OK  ]
+[samer@node027 ~]$ sudo iptables -L -n
+	Chain INPUT (policy ACCEPT)
+	target     prot opt source               destination
+	RH-Firewall-1-INPUT  all  --  0.0.0.0/0            0.0.0.0/0
+	
+	Chain FORWARD (policy ACCEPT)
+	target     prot opt source               destination
+	__ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0           PHYSDEV match --physdev-is-bridged__
+	RH-Firewall-1-INPUT  all  --  0.0.0.0/0            0.0.0.0/0
+	
+	Chain OUTPUT (policy ACCEPT)
+	target     prot opt source               destination
+	
+	Chain RH-Firewall-1-INPUT (2 references)
+	target     prot opt source               destination
+	ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0
+	ACCEPT     icmp --  0.0.0.0/0            0.0.0.0/0           icmp type 255
+	ACCEPT     esp  --  0.0.0.0/0            0.0.0.0/0
+	ACCEPT     ah   --  0.0.0.0/0            0.0.0.0/0
+	ACCEPT     udp  --  0.0.0.0/0            224.0.0.251         udp dpt:5353
+	ACCEPT     udp  --  0.0.0.0/0            0.0.0.0/0           udp dpt:631
+	ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0           tcp dpt:631
+	ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0           state RELATED,ESTABLISHED
+	ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:22
+	REJECT     all  --  0.0.0.0/0            0.0.0.0/0           reject-with icmp-host-prohibited
+[samer@node027 ~]$ sudo //nano /etc/sysctl.conf  # Disable netfilter on bridges MUST by = 0//
+	# Disable netfilter on bridges
+	net.bridge.bridge-nf-call-ip6tables = 0
+	net.bridge.bridge-nf-call-iptables = 0
+	net.bridge.bridge-nf-call-arptables = 0
+[samer@node027 ~]$ sudo sysctl -p /etc/sysctl.conf
+	net.ipv4.ip_forward = 0
+	net.ipv4.conf.default.rp_filter = 1
+	kernel.sysrq = 0
+	kernel.core_uses_pid = 1
+	kernel.msgmni = 1024
+	net.ipv4.ip_local_port_range = 32768 61000
+	fs.file-max = 65536
+	net.ipv4.tcp_fin_timeout = 30
+	net.ipv4.tcp_keepalive_time = 1800
+	net.core.rmem_default = 262144
+	net.core.rmem_max = 262144
+	kernel.shmmax = 4294967296
+	kernel.shmmni = 20960
+	kernel.shmall = 4294967296
+	kernel.sem = 250 32000 100 128
+	net.ipv4.conf.all.arp_filter = 1
+	kernel.randomize_va_space = 0
+	net.ipv4.neigh.default.gc_thresh1 = 2048
+	net.ipv4.neigh.default.gc_thresh2 = 4096
+	net.ipv4.neigh.default.gc_thresh3 = 8192
+	vm.zone_reclaim_mode = 3
+	net.bridge.bridge-nf-call-ip6tables = 0
+	net.bridge.bridge-nf-call-iptables = 0
+	net.bridge.bridge-nf-call-arptables = 0
+[samer@node027 ~]$ sudo service libvirtd stop
+	Stopping libvirtd daemon:                                  [  OK  ]
+[samer@node027 ~]$ sudo service libvirtd start
+	Starting libvirtd daemon:                                  [  OK  ]
+[samer@node027 ~]$ sudo virt-install --name=controller --disk path=/home/qemu/images/controller.img,size=10 --ram=2048 --os-type=linux --os-variant=rhel6 --network bridge:br0 --nographics --cdrom=/tmp/CentOS-7-x86_64-Minimal-1511.iso
+
+
+Starting install...
+Creating storage file...                                                                                          |  10 GB     00:00
+Creating domain...                                                                                                |    0 B     00:00
+Connected to domain controller
+Escape character is ^]

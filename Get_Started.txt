@@ -1,0 +1,55 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-01-23T10:08:27+01:00
+
+====== Get Started ======
+Created Saturday 23 January 2016
+
+===== Conectar a servidor SSH =====
+
+==== desde LINUX ====
+
+	ssh -X samer@157.159.249.2
+
+==== desde Windows ====
+	 http://www.putty.org/
+	Para una conexión simple de Shell a Shell vemos los siguientes parámetros:
+		**Hostname[ip address]:** “ la direccion IP del servidor, por ejemplo;157.159.249.2”
+		**Port:** “22”
+		**Conection Type:** “SSH”
+	Al tener esos valores introducidos ya podremos hacer conexión vía SSH, damos clic en “open”.
+
+
+===== Conocer el Equipo =====
+
+==== Vesion de OS ====
+	//lsb_release -a//
+		LSB Version:    :core-4.0-amd64:core-4.0-ia32:core-4.0-noarch:graphics-4.0-amd64:graphics-4.0-ia32:graphics-4.0-noarch:printing-4.0-amd64:printing-4.0-ia32:printing-4.0-noarch
+		Distributor ID: CentOS
+		Description:    CentOS release 5.8 (Final)
+		Release:        5.8
+		Codename:       Final
+
+
+==== Información del procesador ====
+	 Mostrar el nombre del fabricante, modelo, y velocidad:
+	//grep 'vendor_id' /proc/cpuinfo ; grep 'model name' /proc/cpuinfo ; grep 'cpu MHz' /proc/cpuinfo//
+		8X 
+		  vendor_id       : GenuineIntel
+		  model name  : Intel(R) Xeon(R) CPU           E5520  @ 2.27GHz
+		  cpu MHz         : 2325.630
+
+
+==== Tipo de máquina: ====
+	//uname -m//
+		x86_64
+
+==== Procesador soporta “Extensiones de Virtualización” (Intel-VT) ====
+	//grep -i vmx /proc/cpuinfo//
+
+
+==== Memoria RAM y partición SWAP ====
+	 cambiar el último parámetro por: -b = Bytes, -k = Kilobytes, -m = Megabytes, -g = Gigabytes
+	//free -o -m//
+	
+	

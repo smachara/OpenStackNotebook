@@ -1,0 +1,38 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-01-26T16:27:48+01:00
+
+====== service network restart ======
+Created Tuesday 26 January 2016
+
+[samer@node027 ~]$ sudo service network restart
+[sudo] password for samer:
+Shutting down interface br0:                               [  OK  ]
+Shutting down interface br1:                               [FAILED]
+Shutting down interface br3:                               [FAILED]
+Shutting down interface br4:                               [  OK  ]
+Shutting down interface eth0:                              [  OK  ]
+Shutting down interface eth1:                              [  OK  ]
+Shutting down interface eth2:                              [  OK  ]
+Shutting down interface eth3:                              [  OK  ]
+Shutting down interface ib0:                               [  OK  ]
+Shutting down loopback interface:                          [  OK  ]
+Bringing up loopback interface:                            [  OK  ]
+Bringing up interface eth0:                                [  OK  ]
+Bringing up interface eth1:                                [  OK  ]
+Bringing up interface eth2:
+Determining IP information for eth2... done.
+														   [  OK  ]
+Bringing up interface eth3:                                [  OK  ]
+Bringing up interface eth4:  Device eth4 does not seem to be present, delaying initialization.
+														   [FAILED]
+Bringing up interface ib0:                                 [  OK  ]
+Bringing up interface br0:                                 [  OK  ]
+Bringing up interface br1:
+Determining IP information for br1... failed.
+														   [FAILED]
+Bringing up interface br3:
+Determining IP information for br3... failed.
+														   [FAILED]
+Bringing up interface br4:                                 [  OK  ]
+

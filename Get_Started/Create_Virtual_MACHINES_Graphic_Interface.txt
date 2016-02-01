@@ -1,0 +1,46 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-01-25T21:46:33+01:00
+
+====== Create Virtual MACHINES Graphic Interface ======
+Created Monday 25 January 2016
+
+
+===== Verifiy Network Conection: =====
+	**check if it has an IP address**
+		//ip addr ls dev eth0  # the new iproute tools//
+		//ifconfig eth0        # old ifconfig//
+	check if the Ethernet link is up
+		ip link ls dev eth0  # look for LOWER_UP
+		ethtool eth0         # look for Link detected: yes
+	 a port may be "down" in software as well, in which case it may not have a link, despite being plugged in
+		ip link ls dev etho  # look for UP
+		ifconfig eth0        # look for UP / RUNNING (on the same line as the other flags)
+
+
+===== Instal KVM =====
+	yum intall qemu-kvm python-virtinst virt-manager virt-top virt-viewer libvirt libvirt-client
+	
+
+===== Show the number of VM using the module KVM =====
+	lsmod  | grep kvm
+	modprobe kvm
+	lsmod  | grep kvm
+
+
+==== Images are Stored at ====
+	[[/var/lib/libvirt/images/]]
+	(optional) link image directory to another directory -example
+		mkdir -p [[/home/qemu/images]]
+		chown -R qemu.qemu [[/home/qemu]]
+		chcon --reference 	[[/var/lib/libvirt/images]] [[/home/qemu/images]]
+		rmdir 	[[/var/lib/libvirt/images/]]
+		ln -s  [[/home/qemu/images]] [[/var/lib/libvirt/images]]
+		cd [[/var/lib/libvirt/]]
+		ls -l
+
+
+===== Start Service libvirtd =====
+	service libvirtd start
+	virt-manager
+

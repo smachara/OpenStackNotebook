@@ -1,0 +1,67 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-01-26T04:02:52+01:00
+
+====== Tracert ======
+Created Tuesday 26 January 2016
+Tracert
+
+Tracert
+
+Determina la ruta tomada hacia un destino Enviar solicitud de eco de protocolo de mensajes de Control de Internet (ICMP) o los mensajes ICMPv6 al destino con tiempo de incremento gradual a los valores de campo de vida (TTL). La ruta mostrada es la lista de interfaces de enrutador casi al lado de los enrutadores de la ruta de acceso entre un host de origen y destino. La interfaz del lado cercano es la interfaz del enrutador más cercano al host remitente en la ruta de acceso. Si se utiliza sin parámetros, tracert muestra la Ayuda.
+Sintaxis
+
+tracert [-d] -h saltosMáximos -h saltosMáximos ] -jlistaHost] -wtiempo de espera] [-R]-S -SSrcAddr] [-4][-6] [-6]TargetName TargetName
+Parámetros
+
+-d
+	Impide que tracert intente resolver las direcciones IP de los enrutadores intermedios en sus nombres. Esto puede acelerar la visualización de los resultados de tracert .
+
+-h SaltosMáximos
+	Especifica el número máximo de saltos en la ruta de acceso para buscar el destino (destino). El valor predeterminado es 30 saltos.
+
+-j ListaHost
+	Especifica que los mensajes de solicitud de eco utilizarán la opción ruta de origen no estricta en el encabezado IP con el conjunto de destinos intermedios especificados en listaHost. Con el enrutamiento de origen no estricta, destinos intermedios sucesivos pueden separarse por uno o varios enrutadores. El número máximo de direcciones o nombres en la lista de hosts es 9. ListaHost ListaHost es una serie de direcciones IP (en notación decimal con puntos) separadas por espacios. Utilice este parámetro sólo cuando el seguimiento de las direcciones IPv4.
+
+-w Tiempo de espera
+	Especifica la cantidad de tiempo en milisegundos de espera para el mensaje de tiempo excedido de ICMP o de respuesta de eco correspondiente a un mensaje de solicitud de eco dado que se recibirá. Si no se recibe en el tiempo de espera, se muestra un asterisco (**). El tiempo de espera predeterminado es 4000 (4 segundos).
+
+-R
+	Especifica que se utilizará el encabezado de extensión de enrutamiento IPv6 para enviar un mensaje de solicitud de eco al host local, usando el destino como destino intermedio y comprobando la ruta inversa.
+
+-S
+	Especifica la dirección de origen en los mensajes de solicitud de eco. Utilice este parámetro sólo cuando el seguimiento de las direcciones IPv6.
+
+-4
+	Especifica que Tracert.exe solamente puede utilizar IPv4 para la traza.
+
+-6
+	Especifica que Tracert.exe solamente puede utilizar IPv6 para la traza.
+
+TargetName
+	Especifica el destino, identificado por el nombre de host o dirección IP.
+
+-?
+	Muestra la Ayuda en el símbolo del sistema.
+
+Observaciones
+
+	Esta herramienta de diagnóstico determina la ruta tomada hacia un destino mediante el envío de mensajes de solicitud de eco de ICMP con variables de tiempo para los valores de vida (TTL) para el destino. Cada enrutador de la ruta de acceso es necesario para disminuir el valor de TTL de un paquete IP por al menos 1 antes de reenviarlo. De hecho, el TTL es un contador del número máximo de vínculos. Cuando el TTL de un paquete llega a 0, el enrutador debe devolver un mensaje de tiempo excedido de ICMP para el equipo de origen. Para determinar la ruta, Tracert envía el primer mensaje de solicitud de eco con un TTL de 1 y se alcanza incrementando el TTL en 1 en cada transmisión siguiente hasta que responda el destino o el número máximo de saltos. El número máximo de saltos predeterminado es 30 y se puede especificar mediante el parámetro -h . La ruta de acceso se determina examinando los mensajes de tiempo excedido de ICMP devueltos por los enrutadores intermedios y el mensaje de respuesta de eco devuelto por el destino. Sin embargo, algunos enrutadores no devuelven mensajes de tiempo excedido para paquetes con valores de período de vida caducados y son invisibles para el comando tracert. En este caso, se muestra una fila de asteriscos (**) para ese salto.
+
+	Para trazar una ruta de acceso y proporcionar latencia de red y pérdida de paquetes para cada enrutador y vínculo de la ruta de acceso, utilice el comando pathping .
+
+	Este comando sólo está disponible si el Protocolo de Internet (TCP/IP) está instalado como un componente en las propiedades de un adaptador de red en conexiones de red.
+
+Ejemplos
+
+Para trazar la ruta de acceso al host llamado corp7.microsoft.com, escriba:
+
+tracert corp7.microsoft.com
+
+Para trazar la ruta de acceso al host llamado corp7.microsoft.com e impedir que la resolución de cada dirección IP a su nombre, escriba:
+
+tracert -d corp7.microsoft.com
+
+Para trazar la ruta de acceso al host llamado corp7.microsoft.com y usar el 10.12.0.1-10.29.3.1-10.1.44.1 de la ruta de origen no estricta, escriba:
+
+tracert -j 10.12.0.1 10.29.3.1 10.1.44.1 corp7.microsoft.com

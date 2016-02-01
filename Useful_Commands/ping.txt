@@ -1,0 +1,59 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-01-26T04:00:47+01:00
+
+====== ping ======
+Created Tuesday 26 January 2016
+
+Uso del comando Ping
+
+Se aplica a: Windows Server 2008
+
+El comando ping sirve para verificar la conectividad de IP. Cuando esté resolviendo problemas, puede usar ping para enviar una solicitud de eco ICMP a un nombre de host de destino o a una dirección IP. Use ping siempre que necesite comprobar que un equipo host puede conectarse a la red TCP/IP y a los recursos de red. También puede usar ping para aislar problemas de hardware de red y configuraciones incompatibles.
+
+Siga este proceso para diagnosticar la conectividad de la red:
+
+	Haga ping a la dirección de bucle invertido para verificar que TCP/IP está configurado correctamente en el equipo local.
+
+	ping 127.0.0.1
+
+	Haga ping a la dirección IP del equipo local para verificar que se agregó correctamente a la red.
+
+	ping dirección_IP_de_host_local
+
+	Haga ping a la dirección IP de la puerta de enlace predeterminada para verificar que funciona y que se puede comunicar con un host local en la red local.
+
+	ping dirección_IP_de_puerta_enlace_predeterminada
+
+	Haga ping a la dirección IP de un host remoto para verificar que se puede comunicar a través de un enrutador.
+
+	ping dirección_IP_de_host_remoto
+
+En la siguiente tabla se muestran algunas opciones útiles del comando ping.
+ 
+Opción 	Uso
+
+-n cuenta
+	
+
+Determina el número de solicitudes de eco para enviar. El valor predeterminado es de 4 solicitudes.
+
+-w tiempo de espera
+	
+
+Permite ajustar el tiempo de espera (en milisegundos). El valor predeterminado es de 1.000 (tiempo de espera de un segundo).
+
+-l tamaño
+	
+
+Permite ajustar el tamaño del paquete de ping. El tamaño predeterminado es de 32 bytes.
+
+-f
+	
+
+Establece el bit No fragmentar en el paquete de ping. De manera predeterminada, el paquete de ping permite la fragmentación.
+
+/?
+	
+
+Proporciona la ayuda del comando.

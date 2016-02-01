@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-01-23T22:08:10+01:00
+
+====== Links ======
+Created Saturday 23 January 2016
+
+Comandos para conocer el sistema 
+http://blog.desdelinux.net/comandos-para-conocer-el-sistema-identificar-hardware-y-algunas-configuraciones-de-software/
+
+IEEE 802.1Q
+
+Data Center Bridging
+	dcbx standard
+
+How To Easy Install OpenStack Kilo Multi Node (Controller, Compute, Network) on CentOS 7  
+	https://imanudin.net/2015/12/15/how-to-easy-install-openstack-kilo-multi-node-controller-compute-network-on-centos-7/
+	https://www.youtube.com/watch?v=akWkKV13K8I
+
+Virsh Command Reference - libvirt 0.8.7  Edition 1
+	http://libvirt.org/sources/virshcmdref/html-single/

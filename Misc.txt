@@ -1,0 +1,161 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-01-23T22:06:53+01:00
+
+====== Misc ======
+Created Saturday 23 January 2016
+
+ssh -X ubuntu@157.159.249.172
+ssh -X ubuntu@10.142.90.6
+
+
+
+
+Cambiar el nombre de la maquina
+	http://www.liberiangeek.net/2010/06/how-to-quickly-change-computer-name-in-ubuntu-10-04-lucid-lynx/
+
+Restart the server
+	reboot
+
+XAMPP
+	http://eftakhairul.wordpress.com/2010/06/15/install-xampp-in-ubuntu-10-04/
+	Modificar httpd-xampp.conf, en este se encuentra en /opt/lampp/etc/extra
+	Ruta de las pag en Apache /opt/lampp/htdocs	
+
+	sudo /opt/lampp/lampp start
+	sudo /opt/lampp/lampp stop
+
+	http://157.159.249.172/xampp/
+	http://157.159.249.172/phpmyadmin
+
+
+Copiar carpetas
+	scp -r /home/orbac/Downloads/virtualbox-4.0_4.0.8-71778~Ubuntu~lucid_i386.deb/ francisandrea@157.159.103.183:/home/francisandrea/VBox/
+	scp -r /home/orbac/64-32/ ubuntu@157.159.249.172:/home/ubuntu/
+
+Borrar carpetas
+	rm -r carpeta
+
+Installation of ia32-libs
+	clear your APT-GET cache	apt-get clean
+	retrieve the package		apt-get -d install ia32-libs
+	manually copy all from		/var/cache/apt/
+	install 			dpkg -i *.deb
+
+
+Installation NSS
+	root@ubuntu-KVM:~/NSS_3_12_10_RTM/src/nss-3.12.10/mozilla/security/nss# make nss_build_all
+
+
+RPM (http://www.ozzu.com/unix-linux-forum/how-install-rpm-files-linux-t32377.html)
+	Install a package
+		rpm –ivh packagename
+	upgrade a package
+		rpm –Uvh packagename 
+
+rs2mTSP
+
+
+LDAP Installation
+
+	163  tar zxvf openldap-2.4.25.tgz 
+  	164  cd openldap-2.4.25/
+ 	165  configure --help
+  	166  ./configure --help
+ 	 167  ./configure --prefix=/usr/local/ldap --enable-dynamic --enable-ldap --enable-ndb --enable-sql --enable-dynlist --enable-memberof --enable-ppolicy --enable-proxycache --enable-rwm --enable-syncprov --enable-translucent --enable-valsort --with-gnu-ld --with-tls=gnutls
+  	168  sudo apt-get install libgnutls-dev
+  	169  sudo apt-get install gnutls-doc
+  	170  sudo apt-get install libgcrypt11-doc
+  	171  ./configure --prefix=/usr/local/ldap --enable-dynamic --enable-ldap --enable-ndb --enable-sql --enable-dynlist --enable-memberof --enable-ppolicy --enable-proxycache --enable-rwm --enable-syncprov --enable-translucent --enable-valsort --with-gnu-ld --with-tls=gnutls
+ 	172  apt-cache search berkeley
+  	173  apt-cache search libdb
+  	174  apt-cache search libdb4
+  	175  sudo apt-get install libdb4.8 libdb4.8-dev
+  	176  ./configure --prefix=/usr/local/ldap --enable-dynamic --enable-ldap --enable-ndb --enable-sql --enable-dynlist --enable-memberof --enable-ppolicy --enable-proxycache --enable-rwm --enable-syncprov --enable-translucent --enable-valsort --with-gnu-ld --with-tls=gnutls
+ 	177  ./configure --prefix=/usr/local/ldap --enable-dynamic --enable-ldap --enable-ndb --enable-dynlist --enable-memberof --enable-ppolicy --enable-proxycache --enable-rwm --enable-syncprov --enable-translucent --enable-valsort --with-gnu-ld --with-tls=gnutls
+  	178  ./configure --prefix=/usr/local/ldap --enable-dynamic --enable-ldap --enable-dynlist --enable-memberof --enable-ppolicy --enable-proxycache --enable-rwm --enable-syncprov --enable-translucent --enable-valsort --with-gnu-ld --with-tls=gnutls
+
+  	179  make depend
+	
+	/usr/local/ldap/etc/openldap
+
+Buscar
+	find -name
+
+Explorer
+	apt-get install nautilus	
+	nautilus
+
+Ver los permisos
+	ls -la /usr/local/ldap/etc/openldap
+
+Ejecutar el servidor Ldap
+	oot@ubuntu-KVM:/usr/local/ldap/etc/openldap# /usr/local/ldap/libexec/slapd -d 5 -f slapd.conf
+
+Software cliente
+	/luma-2.4$ ./install.py --prefix=/usr/local
+	/usr/local/bin
+	QT >= 3.2		http://qt.nokia.com/downloads/
+				https://bitbucket.org/tortoisehg/thg/wiki/developers/MacOSX
+		Python >= 2.3
+		PyQt >= 3.10
+		sudo apt-get install python2.7-dev
+		sudo apt-get install libqt4-dev
+		
+		python-ldap >= 2.0.0	http://wiki.python.org/moin/CheeseShopTutorial
+
+
+Python Local
+	/usr/local/bin
+
+Desinstalar
+	sudo apt-get remove <app name>
+
+Documentation
+	http://www.packtpub.com/article/installing-and-configuring-the-python-ldap-library-and-binding-to-an-ldap-directory
+	http://joysofprogramming.com/install-pyqt-tools-ubuntu/
+	http://www.apachefriends.org/en/xampp-windows.html
+	https://bitbucket.org/tortoisehg/thg/wiki/developers/MacOSX
+	http://publib.boulder.ibm.com/infocenter/tssfsv21/v1r0m0/index.jsp?topic=/com.ibm.sanfs222.doc/fog0_r_ldif_file.html
+	http://en.wikipedia.org/wiki/LDAP_Data_Interchange_Format
+	http://download.oracle.com/docs/cd/B10501_01/network.920/a96579/comtools.htm
+	http://www.ietf.org/rfc/rfc2849.txt
+	http://opensource.sys-con.com/node/400906
+	http://www.zytrax.com/books/ldap/ch14/index.html#ldapadd
+	https://help.ubuntu.com/community/OpenLDAPServer
+	http://www.symas.com/blog/?page_id=66
+	http://fusionsecurity.blogspot.com/2010/02/oid-password-policies-and-account.html
+
+
+
+
+
+Version de ubuntu
+	lsb_release -a
+
+
+LDAP ADD
+	ldapadd -x -W -c -D "cn=Manager,dc=xorbac,dc=com" -f /usr/local/ldap/etc/openldap/test.ldif
+	
+LDAP Search
+	ldapsearch -x -b 'dc=xorbac,dc=com' '(objectclass=*)'
+
+LDAP Modify
+	ldapmodify -x -W -c -D "cn=Manager,dc=xorbac,dc=com" -f /usr/local/ldap/etc/openldap/pass.ldif
+
+
+Working with eggs
+	Uninstall eggs--	easy_install -mxN PackageName
+
+
+Librerias
+	http://svn.kmrc.de/download/distribution/contrib/ (python-ldap)
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,49 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-01-30T23:48:12+01:00
+
+====== Setup a Virtual Machine with virt ======
+Created Saturday 30 January 2016
+	a. use wget to downloadde iso and move (mv) to /tmp 
+	
+http://mirror0.babylon.network/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1511.iso 
+
+		virt-install --name=node1.controler --disk path=/var/lib/libvirt/images/vm1.img,size=12 --ram=512 --os-type=linux --os-variant=rhel6 --network bridge:br0 --nographics --cdroom=/temp/Centos-6.3-x86_64-minimal.isono
+		
+		 IMPORTANT: do not hit "ENTER" use "TAB" to modify instalation options
+		type
+		 > vmlinuz initrd.img console=ttyS0,115200
+		
+	c. OS configuration 
+		Disk Found -> Skip
+		Welcome ->OK
+		Language ->English
+		Warning -> Re-initialize all Selection -> Paris
+		Root Password  -> Password:   
+									->Password (confirm):
+		Partition Type  -> OK
+		writing storage config to disk -> Write changes to disk
+		Complete-> Reboot
+		
+	d. Setup VM Network and test 
+		I am.
+		vi /etc/sysconfig/network-scripts/network-functions 
+		vi [[/etc/sysconfig/network]]  
+			NETWORKING=yes
+			HOSTNAME=node1.controler
+		ifup eth0
+		yum install nano
+		nano [[/etc/sysconfig/network]]
+			NETWORKING=yes
+			HOSTNAME=node1.controler
+			 nano [[/etc/sysconfig/network-scripts/ifcfg-eth0]]
+			DEVICE="eth0"
+			BOOTPROTO="dhcp"
+			HWADDR="52:54:00:69:B6:3A"
+			ONBOOT="yes"
+			TYPE="Ethernet"
+			UUID="edsjkdckjdckjdnckjdnckdjcndkjcndkjc"
+		ip addr show eth0
+		ssh 192.168.1.137
+		ls
+

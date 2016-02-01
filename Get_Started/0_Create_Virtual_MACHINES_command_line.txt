@@ -1,0 +1,64 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-01-25T23:08:23+01:00
+
+====== Create Virtual MACHINES from console ======
+Created Monday 25 January 2016
+
+https://www.youtube.com/watch?v=QGPeGdAPJXs
+
+ip l
+ yum install nano
+
+ 
+[ ] Install KVM
+	a. verify if system can handel KVM
+			 //egrep '(vmx|svm)' /proc/cpuinfo//
+
+			//yum install qemu-kvm python-virtinst virt-manager virt-top virt-viewer libvirt libvirt-client//
+
+
+			//lsmod  | grep kvm//
+			//modprobe kvm//
+			//lsmod  | grep kvm//
+
+	b. (Optional)link image directory to another directory -example
+			//mkdir -p /home/qemu/images//
+			//chown -R qemu.qemu /home/qemu//
+			//chcon --reference 	/var/lib/libvirt/images /home/qemu/images//
+			//rmdir 	/var/lib/libvirt/images///
+			//ln -s  /home/qemu/images /var/lib/libvirt/images//
+	//		     cd /var/lib/libvirt///
+	
+	c. Setup a bridg
+			//chkconfig NetworkManager off//
+			//service NetworkManager stop//
+			//nano /etc/sysconfig/network-scripts/ifcfg-eth0//
+				DEVICE=eth0
+				ONBOOT=yes
+				BRIDGE=br0
+								ctrl+x , yes	    
+			//nano /etc/sysconfig/network-scripts/ifcfg-br0//
+				DEVICE=br0
+				TYPE=Bridge
+				ONBOOT=yes
+				BOOTPROTO=dhcp
+				STP=yes
+				DELAY=0
+								ctrl+x , yes
+			//service network restart//
+
+			//ip addr show eth0 # there's is not ip addres in there//
+	//		     ip addr show br0 # ip address should be here//
+			//brctl show//
+		
+			//iptables -I FORWARD -m physdev --physdev-is-bridged -j ACCEPT //
+			//service iptables save//
+			//service iptables restart//
+			//iptables -L //
+			//nano /etc/sysctl.conf  # Disable netfilter on bridges MUST by = 0//
+			//sysctl -p /etc/sysctl.conf//
+	d. Start libvirtd
+			//service libvirtd stop//
+			**service libvirtd start**
+**KVM IS INSTALLED**

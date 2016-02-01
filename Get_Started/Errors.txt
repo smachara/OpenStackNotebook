@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-01-26T03:39:33+01:00
+
+
+
+[samer@nebula /]$ yum install qemu-kvm python-virtinst virt-manager virt-top virt-viewer libvirt libvirt-client
+Loaded plugins: fastestmirror
+Config Error: Error accessing file for config file://///etc/yum.repos.d/cm.repo
+
+
+[samer@nebula /]$ sudo yum install qemu-kvm python-virtinst virt-manager virt-top virt-viewer libvirt libvirt-client
+[sudo] password for samer:
+samer is not in the sudoers file.  This incident will be reported.
+
