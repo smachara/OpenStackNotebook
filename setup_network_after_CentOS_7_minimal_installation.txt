@@ -1,0 +1,31 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-02-01T13:07:04+01:00
+
+====== setup network after CentOS 7 minimal installation ======
+Created Monday 01 February 2016
+
+==== FROM Virtualbox ====
+	http://teaching.idallen.com/cst8207/14f/notes/000_centos_virtualbox_install.html#networking
+		Open the Settings window.
+		In the left hand navigation pane, go to Network.
+		Select the tab for Adapter 1.
+		Make sure that Enable Network Adapter is checked.
+		Make sure that Attached to: is set to just NAT (not NAT Network, just simple NAT).
+	
+
+===== Ethernet interfaces are not enabled by default. =====
+	http://lintut.com/how-to-setup-network-after-rhelcentos-7-minimal-installation/
+	//nmcli d//
+	//service network restart//
+	//ip a//
+
+===== How to configure static ip address on CentOS 7 =====
+	http://lintut.com/how-to-configure-static-ip-address-on-centos-7/
+
+
+===== Configuring a DHCP Client =====
+	https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-dhcp-configuring-client.html
+
+===== Interface Configuration Files =====
+	https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-networkscripts-interfaces.html

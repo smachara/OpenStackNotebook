@@ -5,8 +5,9 @@ Creation-Date: 2016-01-26T03:00:57+01:00
 ====== Intall-OpenStack Kilo on CentOS7-Basic Enviroment ======
 Created Tuesday 26 January 2016
 
-https://www.youtube.com/watch?v=akWkKV13K8I
-https://www.youtube.com/watch?v=QGPeGdAPJXs
+How To Easy Install OpenStack Kilo Multi Node (Controller, Compute, Network) on CentOS 7 
+	https://www.youtube.com/watch?v=akWkKV13K8I
+
 
 ===== Preliminary =====
 
@@ -19,22 +20,26 @@ https://www.youtube.com/watch?v=QGPeGdAPJXs
 
 - Minimum requirement for the system :
 	http://docs.openstack.org/kilo/install-guide/install/yum/content/ch_overview.html
-Contoller Node : 
-	1  CPU
-	8 GB RAM 
-	100 GB Harddisk
-	1 NIC
+	- Minimum requirement for the system :
+	
+	Contoller Node : 1-2 GB RAM 
+			: 10 GB Harddisk
+			: 1 NIC
 
-sudo virt-install --name=controller --disk path=/home/qemu/images/controller.img,size=10 --ram=2048 --os-type=linux --os-variant=rhel6 --network bridge:br0 --nographics --cdrom=/tmp/CentOS-7-x86_64-Minimal-1511.iso
+	sudo virt-install 
+		--name=controller 
+		--disk path=/home/qemu/images/controller.img,size=10 
+		--ram=1024 --os-type=linux 
+		--os-variant=rhel6 
+		--network bridge:br0 
+		--nographics 
+		--extra-args='console=tty0 console=ttys0,115200n8 serial'
+		--location=/tmp/CentOS-7-x86_64-Minimal-1511.iso
 
-Compue Node:	
-	2 CPU
-	8 GB RAM
-	100 GB Harddisk
-	 2 NIC
-
-Network Node	
-	1 CPU
-	2 MB RAM
-	50 GB Harddisk
-	3 NIC
+	Compue Node	: 2 GB RAM
+			: 10 GB Harddisk
+			: 2 NIC
+	
+	Network Node	: 512 MB RAM
+			: 10 GB Harddisk
+			: 3 NIC

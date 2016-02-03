@@ -15,14 +15,29 @@ ip l
 	a. verify if system can handel KVM
 			 //egrep '(vmx|svm)' /proc/cpuinfo//
 
-			//yum install qemu-kvm python-virtinst virt-manager virt-top virt-viewer libvirt libvirt-client//
+		yum install -y \
+		  virt-install \
+		  virt-manager \
+		  virt-top \
+		  virt-viewer \
+		  guestfs-browser \
+		  libguestfs-tools \
+		  //python-virtinst \//
+		  python-libguestfs \
+		  //qemu-kvm \//
+		  qemu-system-x86 \
+		  //libvirt \//
+		  //libvirt-client \//
+		  libvirt-daemon-kvm \
+		  libvirt-daemon-config-network \
+		  virt-v2v
 
 
 			//lsmod  | grep kvm//
 			//modprobe kvm//
 			//lsmod  | grep kvm//
 
-	b. (Optional)link image directory to another directory -example
+	b.(Optional)link image directory to another directory -example
 			//mkdir -p /home/qemu/images//
 			//chown -R qemu.qemu /home/qemu//
 			//chcon --reference 	/var/lib/libvirt/images /home/qemu/images//
@@ -52,6 +67,8 @@ ip l
 	//		     ip addr show br0 # ip address should be here//
 			//brctl show//
 		
+
+			yum install iptables-services
 			//iptables -I FORWARD -m physdev --physdev-is-bridged -j ACCEPT //
 			//service iptables save//
 			//service iptables restart//
@@ -60,5 +77,10 @@ ip l
 			//sysctl -p /etc/sysctl.conf//
 	d. Start libvirtd
 			//service libvirtd stop//
-			**service libvirtd start**
+			
+			# enable / start services
+			service libvirtd start
+			systemctl status libvirtd.service
+service libvirt-guests start
+
 **KVM IS INSTALLED**

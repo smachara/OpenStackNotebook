@@ -4,14 +4,26 @@ Creation-Date: 2016-01-30T23:48:12+01:00
 
 ====== Setup a Virtual Machine with virt ======
 Created Saturday 30 January 2016
-	a. use wget to downloadde iso and move (mv) to /tmp 
-	
-http://mirror0.babylon.network/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1511.iso 
 
-		virt-install --name=node1.controler --disk path=/var/lib/libvirt/images/vm1.img,size=12 --ram=512 --os-type=linux --os-variant=rhel6 --network bridge:br0 --nographics --cdroom=/temp/Centos-6.3-x86_64-minimal.isono
+3b. Inlsstalling KVM in CentOS 6.3 from console (no GUI)
+	https://www.youtube.com/watch?v=QGPeGdAPJXs
+	
+	a. use wget to downloadde iso and move (mv) to /tmp 
+		yum install -y wget 
+		wget http://mirror0.babylon.network/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1511.iso 
+
+	sudo virt-install 
+		--name=controller 
+		--disk path=/home/qemu/images/controller.img,size=10 
+		--ram=1024 --os-type=linux 
+		--os-variant=rhel6 
+		--network bridge:br0 
+		--nographics 
+		--extra-args='console=tty0 console=ttys0,115200n8 serial'
+		--location=/tmp/CentOS-7-x86_64-Minimal-1511.iso
 		
 		 IMPORTANT: do not hit "ENTER" use "TAB" to modify instalation options
-		type
+		 type
 		 > vmlinuz initrd.img console=ttyS0,115200
 		
 	c. OS configuration 

@@ -75,10 +75,10 @@ Created Tuesday 26 January 2016
 	ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:22
 	REJECT     all  --  0.0.0.0/0            0.0.0.0/0           reject-with icmp-host-prohibited
 [samer@node027 ~]$ sudo //nano /etc/sysctl.conf  # Disable netfilter on bridges MUST by = 0//
-	# Disable netfilter on bridges
-	net.bridge.bridge-nf-call-ip6tables = 0
-	net.bridge.bridge-nf-call-iptables = 0
-	net.bridge.bridge-nf-call-arptables = 0
+	__# Disable netfilter on bridges__
+	__net.bridge.bridge-nf-call-ip6tables = 0__
+	__net.bridge.bridge-nf-call-iptables = 0__
+	__net.bridge.bridge-nf-call-arptables = 0__
 [samer@node027 ~]$ sudo sysctl -p /etc/sysctl.conf
 	net.ipv4.ip_forward = 0
 	net.ipv4.conf.default.rp_filter = 1

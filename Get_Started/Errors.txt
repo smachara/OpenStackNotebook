@@ -4,12 +4,9 @@ Creation-Date: 2016-01-26T03:39:33+01:00
 
 
 
-[samer@nebula /]$ yum install qemu-kvm python-virtinst virt-manager virt-top virt-viewer libvirt libvirt-client
-Loaded plugins: fastestmirror
-Config Error: Error accessing file for config file://///etc/yum.repos.d/cm.repo
-
-
-[samer@nebula /]$ sudo yum install qemu-kvm python-virtinst virt-manager virt-top virt-viewer libvirt libvirt-client
-[sudo] password for samer:
-samer is not in the sudoers file.  This incident will be reported.
+===== How To Fix “Device eth0 does not seem to be present, delaying initialization” Error =====
+	
+	http://www.unixmen.com/fix-device-eth0-seem-present-delaying-initialization-error/
+	
+system-config-network-tui and set up the card again.
 
