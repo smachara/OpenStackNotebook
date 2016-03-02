@@ -1,0 +1,33 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-02T11:38:33+01:00
+
+====== GIT ======
+Created mercredi 02 mars 2016
+
+==== 1 Installing Git for Linux ====
+	sudo apt-get install git
+
+==== 2 Configuring GitHub ====
+	git config --global user.name "user_name"
+	git config --global user.email "email_id"
+
+==== 3 Creating a local repository ====
+	git init Mytest
+				Create a folder in your system. This will serve as a local repository which will later be pushed onto the GitHub website. Use the following command:
+
+==== 4 Creating a README file to describe the repository ====
+	gedit README
+
+==== 5 Adding repository files to an index ====
+	git add README
+	git add smaple.c
+
+==== 6 Committing changes made to the index ====
+	git commit -m "some_message"
+
+==== 7 Creating a repository on GitHub ====
+	git remote add origin https://github.com/user_name/Mytest.git
+
+==== 8 Pushing files in local repository to GitHub repository ====
+	git push origin master
