@@ -1,0 +1,25 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-03T10:55:31+01:00
+
+====== Run the .sh File Shell Script ======
+Created jeudi 03 mars 2016
+	http://www.cyberciti.biz/faq/run-execute-sh-shell-script/
+
+==== .sh File As Root User ====
+	Simply use sudo or su as follows:
+		**sudo bash filename.sh**
+	Type your password. Another option is to use the su command as follows to become superuser:
+		**su -**
+	Type root user password and finally run your script:
+		**bash filename.sh**
+
+==== chmod Command: Run Shell Script In Linux ====
+	Another recommend option is to set an executable permission using the chmod command as follows:
+		**chmod +x file.sh**
+	Now your can run your .sh file as follows
+	**./file.sh**
+
+
+==== Setting up permissions on a script ====
+	https://bash.cyberciti.biz/guide/Setting_up_permissions_on_a_script

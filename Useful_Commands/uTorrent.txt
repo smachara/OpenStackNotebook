@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-02T15:21:33+01:00
+
+====== uTorrent ======
+Created mercredi 02 mars 2016
+
+
+http://www.itzgeek.com/how-tos/linux/ubuntu-how-tos/install-%CE%BCtorrent-utorrent-on-ubuntu-14-04.html
+
+http://www.itzgeek.com/how-tos/linux/ubuntu-how-tos/utorrent-startup-script-run-utorrent-boot-ubuntu-14-04-14-10.html

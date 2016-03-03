@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-02T14:15:39+01:00
+
+====== VirtualBox ======
+Created mercredi 02 mars 2016
+
+==== Installation of VirtualBox from the Command Line : ====
+	In Ubuntu 14.04 LTS & 14.10 , virtualbox packages are included in multiverse repository. To verify this information run below command .
+		$ **apt-cache policy virtualbox**
+	first enable the multiverse repository (if not enable), 
+		**$ sudo add-apt-repository multiverse**
+	then update the package database & 
+		**$ sudo apt-get update**
+	then use agt-get command to install virtualbox package.
+		**$ sudo apt-get install virtualbox**
+

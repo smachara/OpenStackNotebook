@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-03T13:48:14+01:00
+
+====== Errors ======
+Created jeudi 03 mars 2016
+
+**Problem** 
+Waiting for VM "fuel-master" to power on...
+VM "fuel-master" has been successfully started.
+Waiting for product VM to install. Please do NOT abort the script...
+**Solution**
+	You're missing the Fuel 5.0 ISO in the virtualbox/iso directory. you
+	should copy it there 
+	https://www.mail-archive.com/fuel-dev@lists.launchpad.net/msg01084.html
+
+**I have the wrong ISO.**
+	http://seed.fuel-infra.org/fuelweb-community-release/fuel-community-8.0.iso.torrent

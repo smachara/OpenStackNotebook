@@ -31,4 +31,3 @@ Created mercredi 02 mars 2016
 
 ==== 8 Pushing files in local repository to GitHub repository ====
 	git push origin master
-9SSSS
