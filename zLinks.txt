@@ -1,0 +1,34 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-01-23T22:08:10+01:00
+
+====== zLinks ======
+Created Saturday 23 January 2016
+
+Comandos para conocer el sistema 
+http://blog.desdelinux.net/comandos-para-conocer-el-sistema-identificar-hardware-y-algunas-configuraciones-de-software/
+
+IEEE 802.1Q
+
+Data Center Bridging
+	dcbx standard
+
+How To Easy Install OpenStack Kilo Multi Node (Controller, Compute, Network) on CentOS 7  
+	https://imanudin.net/2015/12/15/how-to-easy-install-openstack-kilo-multi-node-controller-compute-network-on-centos-7/
+	https://www.youtube.com/watch?v=akWkKV13K8I
+
+Virsh Command Reference - libvirt 0.8.7  Edition 1
+	http://libvirt.org/sources/virshcmdref/html-single/
+
+30 Things to Do After Minimal RHEL/CentOS 7 Installation
+	http://www.tecmint.com/things-to-do-after-minimal-rhel-centos-7-installation/
+
+Virtual networking
+	https://www.virtualbox.org/manual/ch06.html
+	
+VirtualBox. Configuración de la conexión de red.
+	http://www.adictosaltrabajo.com/tutoriales/virtualbox/
+
+Configurar interfaces de red como “eth” en CentOS 7 y RHEL 7
+	" la nomenclatura de las interfaces de red ha cambiado de eth0, eth1, ethN a por ejemplo, enp0s3,enp0s4…:"
+	http://rm-rf.es/configurar-interfaces-de-red-como-eth-en-centos-7-y-rhel-7/
