@@ -1,0 +1,163 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-10T15:03:39+01:00
+
+====== Configuration Errors ======
+Created Thursday 10 March 2016
+
+==== Create a new OpenStack environment: ====
+	By default, packages will be fetched from external repositories. Please make sure your Fuel master node has internet access.
+	To specify alternate repositories, or to create a local mirror, please check the Settings tab before deployment.
+
+
+==== Home \Environments \Test1 \Nodes \ Add Nodes ====
+A pool of one or more unallocated nodes is needed for this operation. To add to the pool, configure nodes to boot from the network (a.k.a. PXE booting). Fuel will automatically provision and discover the nodes.
+
+[openstack-dev] [Fuel] Salaves
+
+
+
+==== SLAVES ARE NOT RECONIZED ====
+
+samer@samerWS01:~/virtualbox$ ./launch.sh
+Checking for 'expect'... OK
+If you run this script under Cygwin, you may have to add path to VirtualBox directory to your PATH. 
+Usually it is enough to run "export PATH=$PATH:"/cygdrive/c/Program Files/Oracle/VirtualBox" 
+Checking for "VBoxManage"... OK
+Checking for VirtualBox Extension Pack... OK
+Checking for Mirantis OpenStack ISO image... OK
+Going to use Mirantis OpenStack ISO file iso/MirantisOpenStack-7.0.iso
+Checking if SSH client installed... OK
+Checking if ipconfig or ifconfig installed... OK
+Setup is done.
+Deleting host-only interface: vboxnet2...
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Deleting host-only interface: vboxnet0...
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Deleting host-only interface: vboxnet1...
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Creating host-only interface
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Interface vboxnet0 was successfully created
+Disabling DHCP server on interface: vboxnet0...
+Configuring IP address 10.20.0.1 and network mask 255.255.255.0 on interface: vboxnet0...
++ VBoxManage hostonlyif ipconfig vboxnet0 --ip 10.20.0.1 --netmask 255.255.255.0
++ set +x
+Verifying interface vboxnet0 has IP 10.20.0.1 and mask 255.255.255.0 properly set.
+OK.
+Creating host-only interface
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Interface vboxnet1 was successfully created
+Disabling DHCP server on interface: vboxnet1...
+Configuring IP address 172.16.0.254 and network mask 255.255.255.0 on interface: vboxnet1...
++ VBoxManage hostonlyif ipconfig vboxnet1 --ip 172.16.0.254 --netmask 255.255.255.0
++ set +x
+Verifying interface vboxnet1 has IP 172.16.0.254 and mask 255.255.255.0 properly set.
+OK.
+Creating host-only interface
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Interface vboxnet2 was successfully created
+Disabling DHCP server on interface: vboxnet2...
+Configuring IP address 172.16.1.1 and network mask 255.255.255.0 on interface: vboxnet2...
++ VBoxManage hostonlyif ipconfig vboxnet2 --ip 172.16.1.1 --netmask 255.255.255.0
++ set +x
+Verifying interface vboxnet2 has IP 172.16.1.1 and mask 255.255.255.0 properly set.
+OK.
+Virtual machine 'fuel-master' is created and registered.
+UUID: da6a8351-1f91-4b79-8ba6-9b3138f06bae
+Settings file: '/home/samer/VirtualBox VMs/fuel-master/fuel-master.vbox'
+Adding hostonly adapter to fuel-master and bridging with host NIC vboxnet0...
+Adding disk to fuel-master, with size 65535 Mb...
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Medium created. UUID: fbfc46aa-7256-499d-8910-dfe89d44506c
+Adding serial numbers of disks to fuel-master...
+
+Adding hostonly adapter to fuel-master and bridging with host NIC vboxnet1...
+Adding NAT adapter to fuel-master for outbound network access through the host system...
+VBoxManage: error: Machine 'fuel-master' is not currently running
+
+Waiting for VM "fuel-master" to power on...
+VM "fuel-master" has been successfully started.
+Waiting for product VM to install. Please do NOT abort the script...
+Checking for internet connectivity on the host system... OK
+Checking local DNS configuration... OK
+Enabling outbound network/internet access for the product VM... 
+Waiting until the network services are restarted...
+OK
+
+Master node has been installed.
+
+
+Virtual machine 'fuel-slave-1' is created and registered.
+UUID: 31ff8571-4964-44db-9e22-28117e3873f0
+Settings file: '/home/samer/VirtualBox VMs/fuel-slave-1/fuel-slave-1.vbox'
+Adding hostonly adapter to fuel-slave-1 and bridging with host NIC vboxnet0...
+Adding disk to fuel-slave-1, with size 65535 Mb...
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Medium created. UUID: 0eb39f84-c24e-490b-ace7-bb6f8f075c5f
+Adding serial numbers of disks to fuel-slave-1...
+Adding hostonly adapter to fuel-slave-1 and bridging with host NIC vboxnet1...
+Adding hostonly adapter to fuel-slave-1 and bridging with host NIC vboxnet2...
+
+Adding disk to fuel-slave-1, with size 65535 Mb...
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Medium created. UUID: 7bf07e76-a432-4e39-a51f-0b47a686fae8
+Adding serial numbers of disks to fuel-slave-1...
+Adding disk to fuel-slave-1, with size 65535 Mb...
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Medium created. UUID: 2ee57e0e-eafd-44a9-b837-c97ebeaefb32
+Adding serial numbers of disks to fuel-slave-1...
+Waiting for VM "fuel-slave-1" to power on...
+VM "fuel-slave-1" has been successfully started.
+
+
+Virtual machine 'fuel-slave-2' is created and registered.
+UUID: 6bad1f58-ba85-4828-b38f-fe31c9808a48
+Settings file: '/home/samer/VirtualBox VMs/fuel-slave-2/fuel-slave-2.vbox'
+Adding hostonly adapter to fuel-slave-2 and bridging with host NIC vboxnet0...
+Adding disk to fuel-slave-2, with size 65535 Mb...
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Medium created. UUID: b40e1ccd-27f5-4721-8656-2efd50533f01
+Adding serial numbers of disks to fuel-slave-2...
+Adding hostonly adapter to fuel-slave-2 and bridging with host NIC vboxnet1...
+Adding hostonly adapter to fuel-slave-2 and bridging with host NIC vboxnet2...
+
+Adding disk to fuel-slave-2, with size 65535 Mb...
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Medium created. UUID: d3cdc176-7498-4fb8-8a26-4b888c504c7c
+Adding serial numbers of disks to fuel-slave-2...
+Adding disk to fuel-slave-2, with size 65535 Mb...
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Medium created. UUID: 19b679d1-1df2-401b-a55a-b609cbebe43b
+Adding serial numbers of disks to fuel-slave-2...
+Waiting for VM "fuel-slave-2" to power on...
+VM "fuel-slave-2" has been successfully started.
+
+
+Virtual machine 'fuel-slave-3' is created and registered.
+UUID: b323ef72-746f-4eba-ad03-774ea0de2583
+Settings file: '/home/samer/VirtualBox VMs/fuel-slave-3/fuel-slave-3.vbox'
+Adding hostonly adapter to fuel-slave-3 and bridging with host NIC vboxnet0...
+Adding disk to fuel-slave-3, with size 65535 Mb...
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Medium created. UUID: e8f74bab-1cdd-4ac8-bcf0-72d3af6842ec
+Adding serial numbers of disks to fuel-slave-3...
+Adding hostonly adapter to fuel-slave-3 and bridging with host NIC vboxnet1...
+Adding hostonly adapter to fuel-slave-3 and bridging with host NIC vboxnet2...
+
+Adding disk to fuel-slave-3, with size 65535 Mb...
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Medium created. UUID: c25ab584-146b-454c-b2a5-89310edeedff
+Adding serial numbers of disks to fuel-slave-3...
+Adding disk to fuel-slave-3, with size 65535 Mb...
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Medium created. UUID: 120ad4dc-0e9a-4c59-af89-5f24672cf68a
+Adding serial numbers of disks to fuel-slave-3...
+Waiting for VM "fuel-slave-3" to power on...
+VM "fuel-slave-3" has been successfully started.
+
+Slave nodes have been created. They will boot over PXE and get discovered by the master node.
+To access master node, please point your browser to:
+    http://10.20.0.2:8000/
+The default username and password is admin:admin
+samer@samerWS01:~/virtualbox$ 
