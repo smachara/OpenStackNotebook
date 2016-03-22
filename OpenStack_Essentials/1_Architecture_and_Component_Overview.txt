@@ -1,0 +1,167 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-17T14:49:58+01:00
+
+====== 1 Architecture and Component Overview ======
+Created Thursday 17 March 2016
+
+
+
+modular design
+Each component in OpenStack manages a different resource that can be virtualized for the end user.
+
+===== logical architecture =====
+Components of OpenStack can be divided into three groups:
+	* **Control **runs: 
+				the Application Programming Interfaces (API) services, 
+				web interface, 
+				database, and 
+				message bus
+	* **Network** runs: 
+			network service agents for networking
+	* **Compute**
+			is the virtualization hypervisor -> It has services and agents to handle virtual machines.
+
+good baseline for being able to scale out later is to put each of these groups on their own node (separate
+server)
+
+===== Dashboard =====
+	web interface 
+	Horizon is the framework that the dashboard uses.
+	
+
+===== Keystone -> Authentication =====
+	identity management component
+	Keystone will manage tenants, users, and roles and be a catalog of
+	services and endpoints for all the components in the running cluster. all of the components have different API endpoints.
+	
+	Keystone uses username/password authentication to request a token and Public Key Infrastructure (PKI) tokens for subsequent requests.
+	
+
+
+===== Glance =====
+	image management component
+	
+	for an instance to launch:
+		1. look at is the disk image to launch from
+	The images stored in Glance are sometimes called **sealed-disk images**
+		disk images are generic
+			Secure Shell (SSH) host key
+			MAC addresses removed
+		 , so they can be reused and launched repeatedly
+	**cloud-init =  **post-boot configuration facility 
+				is a script that should run post boot to connect back to the metadata service.
+	
+	ways to build these disk images:
+		virtual machine install manually (host-specific information is removed , and include cloud-init in the built image)
+			 tools are //virt-install//, //Oz//, and //appliance-creator//.
+
+
+===== Neutron =====
+	the network management component
+	is an API frontend (and a set of agents) that manages **Software Defined Networking (SDN)**
+	
+	each tenants can create its virtual isolated networks
+	
+	__Each of these isolated networks can be connected to virtual routers to create routes between the virtual networks. A virtual router can have an external gateway connected to it, and external access can be given to each instance by associating a floating IP on an external network with an instance.__
+	
+	
+
+== Networking as a Service (NaaS) ==
+		is the capability to provide networks and network resources on demand via software
+
+
+== Open vSwitch ==
+		is a virtual managed switch
+		isolate the virtual networks for the tenants
+		multiple plugins to manage multiple network appliances
+	
+	**(Networking is the most complex component of OpenStack to configure and maintain.)**
+	
+
+===== Nova =====
+	instance management component
+	
+	__An authenticated user who has access to a Glance image and has created a network for an instance to live on is almost ready to tie all of this together and launch an instance.__
+	
+	last resources that are required are:
+		* a key pair  (SSH key pair.)
+		* a security group. (is a Firewall at the cloud infrastructure layer)
+			public key is placed in the //authorized_keys// file so that a //password-less SSH// connection can be made to the running instance
+	
+	Firewall rules will have to be added for **Internet Control Message Protocol (ICMP)**
+	
+	
+	__The resource's identifiers are provided to __**Nova**__, and __**Nova**__ looks__
+	__at what resources are being used on which __//hypervisors//__, and schedules the instance__
+	__to spawn on a __**compute node**__. The compute node gets the __**Glance**__ image, creates the__
+	__virtual network devices, and boots the instance. During the boot, __//cloud-init//__ should__
+	__run and connect to the metadata service.__
+	
+
+==== Cinder ====
+	is the block storage management component
+	Volumes can be created and attached to instances.
+	
+	Cinder also handles snapshots.
+	
+
+== Storage backends ==
+		**Logical Volume Manager (LVM) **default
+		GlusterFS 
+		Ceph
+		plugins for hardware appliances
+
+
+==== Swift ====
+	object storage management component
+
+	Swift has two layers:
+		1. the **proxy** (API layer, It's the service that the end user communicates with. 
+		2. the **storage** engine.(software-based storage distribution and replication)
+	The **proxy** is configured //to talk// to the **storage engine** on the user's behalf.
+	
+	Storage
+	
+	 backends
+		GlusterFS 
+		Ceph
+
+
+==== Ceilometer ====
+	the telemetry component
+		
+		collects resource measurements
+		monitor the cluster
+
+		originally -> metering system for billing users
+		turned into -> a general-purpose telemetry system
+		
+		**Sample**
+			a meter reading
+			samples get recorded on a regular basis
+		**Statistics**
+			a collection of samples
+			insights into how the resources of an OpenStack deployment are being used.
+		**Alarms**
+			watch for a certain criterion to be met
+			**Heat** autoscaling
+
+
+==== Heat ====
+	the orchestration component
+	Orchestration is the process of launching multiple instances that are intended to work together
+	
+	is not configuration management. It is orchestration. It is intended to coordinate launching the instances, passing configuration data, and executing simple post-boot configuration.
+	
+	**template file**
+		used to define what will be launched.
+		ordering or dependencies set up between the instances.
+		Data that needs to be passed between the instances for configuration
+		//AWS CloudFormation// template language
+	
+	**Stack**
+		 collection of instances
+
+		stack is spawned, the ordering and dependencies, shared conflagration data, and post-boot configuration are coordinated via Heat.
+

@@ -1,0 +1,25 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-22T12:51:46+01:00
+
+====== RDO quickstart- Proof of concept for single node ======
+Created Tuesday 22 March 2016
+
+
+
+[*] $ sudo yum install -y https://www.rdoproject.org/repos/rdo-release.rpm
+[*] $ sudo yum update -y
+[ ] $ sudo yum install -y openstack-packstack
+[ ] $ packstack --allinone
+
+
+[ ] web interface Horizon by going to http://$YOURIP/dashboard. 
+The user name is admin. The password can be found in the file keystonerc_admin in the /root directory of the control node.
+
+==== Next steps ====
+
+[ ] running an instance
+[ ] configuring a floating IP range
+[ ] configuring RDO to work with your existing network
+[ ] expanding your installation by adding a compute node.
+

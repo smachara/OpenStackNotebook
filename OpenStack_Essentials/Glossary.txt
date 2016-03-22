@@ -23,3 +23,5 @@ Created Wednesday 16 March 2016
 		On the command line, the term tenant is used. In the web interface, the term project is used.
 		
 ==== Cluster: ====
+
+==== Puppet: ====

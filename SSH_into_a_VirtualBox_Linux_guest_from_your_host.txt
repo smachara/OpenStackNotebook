@@ -1,0 +1,99 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-22T11:42:28+01:00
+
+====== SSH into a VirtualBox Linux guest from your host ======
+Created Tuesday 22 March 2016
+
+https://www.ulyaoth.net/resources/tutorial-ssh-into-a-virtualbox-linux-guest-from-your-host.35/
+
+**Step 1:** Stop your VirtualBox machine
+Not much to explain here stop your virtual machine as the change would require a restart of the os.
+
+**Step 2:** Go to the settings of your machine
+Right click your virtual machine and choose "Settings" alternative click on the machine and press ctrl+s.
+
+**Step 3:** Click on the network tab
+
+**Step 4:** Fill in the "Adapter 2" information
+We will now make it so the os has a secondary network card that connects to your host only.
+All you have to do is make Adapter 2 look as in the picture below, if you already use multiple network cards you can simply use Adapter 3 or 4 this is no problem at all.
+
+**Step 5:** Start your machine
+
+**Step 6:** Find your ip information
+	ip addr
+	
+If you look at my example the ip address you need is the bottom one "192.168.56.102" ofcourse this can differ for everyone and there is no way to know your setup so just try the ip addresses you will see and one will work :).
+
+**Update**
+1. It has brought to my attention that if you install Linux with gnome that it might not work 100% correctly due to the network manager gnome uses.
+2. In newer versions of Fedora your second network card is disabled by default you can fix this by doing "vim /etc/sysconfig/network-scripts/ifcfg-p7p1" (your file name can be different then mine but you can use what you see for name at 3 in the above picture) then once you are in the file change the "ONBOOT=no" to "ONBOOT=yes" and then restart your network sevices.
+
+**Step 7:** Test you can SSH into your VirtualBox machine (from your real pc)
+Go to your own Linux of Windows machine and start a terminal or Putty and do the following:
+Code:
+
+	$ ssh root@192.168.56.102
+
+Congratulations you can now ssh into your own virtualbox machine from you pc! :) I told you it was easy.
+
+== **extra steps** (not necessarily needed) ==
+I think it is not fun at all to find the ip address of your virtual-box unfortunately if you use DHCP you have no choose but to look up your ip every time again however you could simeply give your machine a static ip address and to make it even more easy give this IP a name in your host file.
+
+Nice talking but how would you actually do this? Well have a look below.
+**Extra Step 1:** Find your ip information and network card name.
+If you already forgot your ip information then once again find it with "ifconfig" or "ip a".
+Code:
+
+$ ifconfig
+
+
+In this case my network card is called "p7p1" and my ip address is "192.168.56.102".
+(if you do not have ifconfig you can install it with: "sudo yum install net-tools")
+
+**Extra Step 2:** open you network card configuration file
+Code:
+
+$ vi /etc/sysconfig/network-scripts/ifcfg-p7p1
+
+Again have a good look as the vi link above difference of course for you cards name.
+
+**Extra Step 3:** Change your network card to static ip
+In your configuration file add the following or change it (please use your ip information ofcourse).
+Code:
+
+BOOTPROTO=static
+IPADDR=192.168.56.102
+NETMASK=255.255.255.0
+
+
+**Extra Step 4:** Restart your network service
+Code:
+
+$ systemctl restart network.service
+
+So now that you have a static ip address you can always ssh to that machine! easy enough but now lets make it little bit more easy and create a name for your ip address.
+
+**Extra Step 5:** Open your host file (from your real pc not VirtualBox)
+Fedora 22:
+Code:
+
+$ vi /etc/hosts
+
+Windows 8.1 or 10:
+Code:
+
+notepad C:\Windows\System32\drivers\etc\hosts
+
+**Extra Step 6:** add your ip and give it a name (from your real pc not VirtualBox)
+Code:
+
+192.168.56.102 fedora22
+
+So that is it now you could for example ssh into you machine like this:
+Code:
+
+$ ssh root@fedora22
+
+

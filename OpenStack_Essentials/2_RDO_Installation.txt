@@ -1,0 +1,43 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-17T14:50:54+01:00
+
+====== 2 RDO Installation ======
+Created Thursday 17 March 2016
+
+Manual installation and configuration of [[OpenStack]] involves  
+	Installing, configuring and registering 
+		1. each of the components
+		2. multiple databases 
+		3. a messaging system.
+It's a very involved, repetitive, error-prone, and sometimes-confusing process.
+Fortunately, there are a few tools to automate this installation and configuration process
+
+	RDO distribution https://www.rdoproject.org/
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Packstack is an install tool for [[OpenStack]] all-in-one installation or multi-node instalation.
+
+Packstack uses:
+		**SSH** connect to each of the nodes
+		**puppet  **on each of the nodes to install and configure OpenStack.
+Configuration of **Neutron** is slightly different for an all-in-one single-server installation as compared to a multinode installation.
+
+A **cluster** will usually need more than one **compute node** to host all the **instances** that end users will spawn.
+
+
+==== The architecture for our demonstration cloud ====
+	three nodes, one for each of our logical categories
+		* 	 A control node
+		* 	 A network node
+		* 	 A compute node
+
+	Each node will have two network interfaces.
+		**eth0** 192.168.123.0/24 subnet represents the private network.
+		**eth1 **192.168.122.0/24 subnet represents the public network
+	
+	Make sure that your nodes have **several CPUs** and a minimum of **4 to 6 GB of RAM**,
+	and install **CentOS or Fedora**
+
+If you're running low on resources, you could __merge the control and network nodes__ into one node and initially run a two-node cluster.
+
