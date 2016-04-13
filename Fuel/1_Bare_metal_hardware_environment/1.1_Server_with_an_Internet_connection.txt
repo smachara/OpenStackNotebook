@@ -1,0 +1,23 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-06T10:22:49+02:00
+
+====== 1.1 Server with an Internet connection ======
+Created Wednesday 06 April 2016
+
+==== installation process: ====
+
+[ ] Plan your OpenStack environment ([[https://docs.mirantis.com/openstack/fuel/fuel-8.0/fuel-install-guide.html#intro-planning|Planning your environment]])
+	* Determine what type of configuration addresses your business needs.
+	* Calculate resources required to process estimated workloads.
+	* Integrate and communicate with existing components.
+	[[+General Purpose - Openstack Architecture Design]]
+
+[ ] Verify [[https://docs.mirantis.com/openstack/fuel/fuel-8.0/fuel-install-guide.html#sysreq-intro|System requirements.]]
+[ ] Verify [[https://docs.mirantis.com/openstack/fuel/fuel-8.0/fuel-install-guide.html#preinstall-chklist-hardware-checklist|Hardware checklist.]]
+[ ] Verify the Fuel Master node is connected to the Internet.
+[ ] Download and [[https://docs.mirantis.com/openstack/fuel/fuel-8.0/fuel-install-guide.html#install-intro|Install Fuel]]
+[ ] Install the Fuel [[https://docs.mirantis.com/openstack/fuel/fuel-8.0/fuel-install-guide.html#fuel-plugins|Plug-ins.]]
+
+
+

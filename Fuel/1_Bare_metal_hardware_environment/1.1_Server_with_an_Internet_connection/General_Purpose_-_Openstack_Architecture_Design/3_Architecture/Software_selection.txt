@@ -1,0 +1,36 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-12T10:50:44+02:00
+
+====== Software selection ======
+Created Tuesday 12 April 2016
+
+Software selection for a general purpose OpenStack architecture design needs to include these three areas:
+
+=====     Operating system (OS) and hypervisor =====
+		Some areas that could be impacted by the selection of OS and hypervisor include:
+		**Cost**
+		    Selecting a commercially supported hypervisor, such as Microsoft Hyper-V, will result in a different cost model rather than community-supported open source hypervisors including KVM, Kinstance or Xen. When comparing open source OS solutions, choosing Ubuntu over Red Hat (or vice versa) will have an impact on cost due to support contracts.
+		**Supportability**
+		    Depending on the selected hypervisor, staff should have the appropriate training and knowledge to support the selected OS and hypervisor combination. If they do not, training will need to be provided which could have a cost impact on the design.
+		**Management tools**
+		    The management tools used for Ubuntu and Kinstance differ from the management tools for VMware vSphere. Although both OS and hypervisor combinations are supported by OpenStack, there will be very different impacts to the rest of the design as a result of the selection of one combination versus the other.
+		**Scale and performance**
+		    Ensure that selected OS and hypervisor combinations meet the appropriate scale and performance requirements. The chosen architecture will need to meet the targeted instance-host ratios with the selected OS-hypervisor combinations.
+		**Security**
+		    Ensure that the design can accommodate regular periodic installations of application security patches while maintaining required workloads. The frequency of security patches for the proposed OS-hypervisor combination will have an impact on performance and the patch installation process could affect maintenance windows.
+		**Supported features**
+		    Determine which features of OpenStack are required. This will often determine the selection of the OS-hypervisor combination. Some features are only available with specific operating systems or hypervisors.
+		**Interoperability**
+		    You will need to consider how the OS and hypervisor combination interactions with other operating systems and hypervisors, including other software solutions. Operational troubleshooting tools for one OS-hypervisor combination may differ from the tools used for another OS-hypervisor combination and, as a result, the design will need to address if the two sets of tools need to interoperate. 
+
+
+=====     OpenStack components =====
+
+=====     Supplemental software =====
+
+=====     Networking software =====
+
+=====     Management software =====
+
+=====     Database software =====

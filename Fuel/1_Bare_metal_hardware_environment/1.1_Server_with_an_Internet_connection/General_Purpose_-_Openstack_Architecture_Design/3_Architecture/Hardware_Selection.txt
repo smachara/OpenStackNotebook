@@ -1,0 +1,29 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-12T10:49:31+02:00
+
+====== Hardware Selection ======
+Created Tuesday 12 April 2016
+
+==== Hardware Selection: ====
+		Hardware selection involves three key areas:
+		* Compute
+		* Network
+		* Storage
+		Wide variety of applications with varying resource usage require:
+		* RAM-intensive
+		* CPU-intensive
+		* Storage-intensive
+		Server hardware must provide the following:
+		* Equal (or nearly equal) balance of compute capacity (RAM and CPU)
+		* Network capacity (number and speed of links)
+		* Storage capacity (gigabytes or terabytes as well as Input/Output Operations Per Second (IOPS)
+
+=== SERVER HARDWARE ===
+[[+1 SERVER HARDWARE]]
+
+=== STORAGE HARDWARE ===
+[[+2 STORAGE HARDWARE]]
+
+=== NETWORKING HARDWARE ===
+[[+3 NETWORKING HARDWARE]]

@@ -1,0 +1,37 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-04T10:11:46+02:00
+
+====== Deployment has failed. ======
+Created Monday 04 April 2016
+
+Error
+Deployment has failed. Method granular_deploy. Deployment failed on nodes 1.
+Inspect Astute logs for the details.
+
+
+Detailed bug description:
+    "Deployment has failed. Method granular_deploy. Deployment failed on nodes 1. 
+     Inspect Astute logs for the details."
+
+Expected results:
+ One controller node deployment in an empty environment.
+
+Description of the environment:
+ Operation system: ubuntu 14.04 LTS
+ Memory: 7.7 Gb
+ Processor: Intel® Core™2 Quad CPU Q9550 @ 2.83GHz × 4 
+ Hard Disk: 250 GB
+
+Additional information:
+  Last week I  had a "time out error" , deploying only one controller node on one virtual machine (https://bugs.launchpad.net/fuel/+bug/1564312), searching for the error I found 
+  that my hard disk doesn't have enought space (110GB), So I mounted  another HHD  linked VBox folder to this new disk, 
+  then I re-started with a clean instalation of Fuel.  
+  Now, I found a diferent error  "Deployment has failed. Method granular_deploy. Deployment failed on nodes 1. 
+  Inspect Astute logs for the details."
+---------------------------------------
+Hi, Everybody.
+  Last week I  had a "time out error", deploying only one controller node on one virtual machine, searching for the error I found that my hard disk doesn't have enought space (110GB), So I mounted  another HHD  linked VBox folder to this new disk, then I re-started with a clean instalation of Fuel.  
+  Now, I found a diferent error  "Deployment has failed. Method granular_deploy. Deployment failed on nodes 1. Inspect Astute logs for the details."
+
+Here is  the "Diagnostic Snapshot" and the Astute log.

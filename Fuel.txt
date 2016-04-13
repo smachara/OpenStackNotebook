@@ -5,3 +5,19 @@ Creation-Date: 2016-03-03T13:47:50+01:00
 ====== Fuel ======
 Created jeudi 03 mars 2016
 
+==== Using Fuel you can: ====
+
+    Deploy multiple highly-available OpenStack environments on virtual or bare metal hardware.
+    Configure and verify network configurations.
+    Test interoperability between the OpenStack components.
+    Easily scale your OpenStack environment by adding and removing nodes.
+
+==== Fuel architecture includes: ====
+	**Fuel Master node**
+    A server with the installed Fuel application that performs initial configuration, provisioning, and PXE booting of the Fuel Slave nodes, as well as assigning the IP addresses to the Fuel Slave nodes.
+	**Fuel Slave node**
+    In the Fuel project terminology, a generic term that describes a server that is provisioned by the Fuel Master node. A Fuel Slave node can be a controller, compute, or storage node, among others. These terms are interchangeable with the OpenStack terminology. 
+
+
+
+Fuel Architecture: https://docs.fuel-infra.org/fuel-dev/develop/architecture.html

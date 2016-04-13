@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-06T10:15:02+02:00
+
+====== 1 Bare metal hardware environment ======
+Created Wednesday 06 April 2016
+
+https://docs.mirantis.com/openstack/fuel/fuel-8.0/fuel-install-guide.html#system-requirements
+
+Install Fuel on **bare metal hardware.**
+	[*] [[+1.1 Server with an Internet connection]] 
+	[ ] on a server that is isolated from the Internet (security reasons)

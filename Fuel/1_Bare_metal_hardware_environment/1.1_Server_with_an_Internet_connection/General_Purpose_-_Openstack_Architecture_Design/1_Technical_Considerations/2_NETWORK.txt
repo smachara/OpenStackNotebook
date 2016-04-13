@@ -1,0 +1,30 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-12T10:11:12+02:00
+
+====== 2 NETWORK ======
+Created Tuesday 12 April 2016
+
+			(OpenStack clouds generally have multiple network segments, with each segment providing access to particular resources.)
+			[ ] **Legacy networking (nova-network)**
+			[*] **Networking (neutron)**
+				at least three network segments: __(A network segment is a logical group of computers that share a network resource. This can be accomplished with a router, VLAN, switch segmentation, etc. You can segment a network either logically (through VLANs or mapping) or physically (connecting switches back to a core).)__
+					* public network -> Used by tenants and operators
+										-> The controller nodes and swift proxies are the only devices connecting to this network segment.
+										-> might also be serviced by hardware load balancers 
+					* manage hardware resources,  
+										-> used by administrators, configuration management tools.
+										->__This network needs to communicate with every hardware node.__ 
+										-> Due to the highly sensitive nature of this network segment, you also need to secure this network from unauthorized access.
+
+					* to  access the physical network, 
+										-> used by applications and consumers and users to access applications
+										-> not capable of communicating directly with the hardware resources
+							   -> Compute resource nodes and network gateway services need to communicate on this network segment.
+
+			**Network performance**
+			Network performance can be boosted considerably by implementing hardware load balancers to provide front-end service to the cloud APIs.
+			
+			 It is possible to design OpenStack environments that run a mix of networking capabilities.
+			
+			 It is important to understand the SSL offloading capabilities of the devices selected

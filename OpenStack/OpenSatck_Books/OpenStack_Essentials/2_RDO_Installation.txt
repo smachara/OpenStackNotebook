@@ -28,9 +28,9 @@ A **cluster** will usually need more than one **compute node** to host all the *
 
 ==== The architecture for our demonstration cloud ====
 	three nodes, one for each of our logical categories
-		* 	 A control node
-		* 	 A network node
-		* 	 A compute node
+		* A control node
+		* A network node
+		* A compute node
 
 	Each node will have two network interfaces.
 		**eth0** 192.168.123.0/24 subnet represents the private network.

@@ -5,6 +5,13 @@ Creation-Date: 2016-03-03T13:48:14+01:00
 ====== Errors ======
 Created jeudi 03 mars 2016
 
+https://bugs.launchpad.net/fuel/+bug/1564312
+
+https://bugs.launchpad.net/fuel/+bug/1565672
+
+
+
+
 **Problem** 
 Waiting for VM "fuel-master" to power on...
 VM "fuel-master" has been successfully started.

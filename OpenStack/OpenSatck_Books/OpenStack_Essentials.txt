@@ -4,3 +4,4 @@ Creation-Date: 2016-03-16T13:16:40+01:00
 
 ====== OpenStack Essentials ======
 Created Wednesday 16 March 2016
+[[../OpenSatck_Books/OpenStack-Essentials.pdf]]

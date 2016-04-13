@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-06T10:20:13+02:00
+
+====== VirtualEnviroment ======
+Created Wednesday 06 April 2016
+

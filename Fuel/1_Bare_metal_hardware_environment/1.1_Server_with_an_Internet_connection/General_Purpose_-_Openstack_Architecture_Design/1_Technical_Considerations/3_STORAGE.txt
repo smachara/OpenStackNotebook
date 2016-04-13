@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-12T10:12:10+02:00
+
+====== 3 STORAGE ======
+Created Tuesday 12 April 2016
+
+			* Designing Object Storage
+				the main goal is to maximize the storage available in each node
+				ensuring that the cost per terabyte is kept to a minimum
+					[ ] 2U server
+					[*] external chassis
+				achieve durability and availability of data stored as objects
+				
+				Each replica of data should exist in its own availability zone with its own power, cooling, and network resources available to service that specific zone.
+				
+			* Designing Block Storage
+				 designing block storage pools so that tenants can choose appropriate storage solutions for their applications.
+				
+	
+			**Storage performance**

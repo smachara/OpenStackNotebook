@@ -1,0 +1,28 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-12T10:48:45+02:00
+
+====== 3 NETWORKING HARDWARE ======
+Created Tuesday 12 April 2016
+
+**Port count: **The design will require networking hardware that has the requisite port count.
+
+**Port density: **A higher port density is preferred, as it leaves more rack space for compute or storage components that may be required by the design. Higher density switches are more expensive and should also be considered, as it is important not to over design the network if it is not required.
+
+**Port speed: **The networking hardware must support the proposed network speed, for example: 1 GbE, 10 GbE, or 40 GbE (or even 100 GbE).
+
+**Redundancy: **Network redundancy can be achieved by adding redundant power supplies or paired switches. If this is a requirement, the hardware will need to support this configuration.
+
+**Power requirements**
+    Ensure that the physical data center provides the necessary power for the selected network hardware. 
+
+**Connectivity**
+    All nodes within an OpenStack cloud require network connectivity. In some cases, nodes require access to more than one network segment. The design must encompass sufficient network capacity and bandwidth to ensure that all communications within the cloud, both north-south and east-west traffic have sufficient resources available.
+
+**Scalability**
+    The network design should encompass a physical and logical network design that can be easily expanded upon. Network hardware should offer the appropriate types of interfaces and speeds that are required by the hardware nodes.
+
+**Availability:** To ensure that access to nodes within the cloud is not interrupted. Use of networking protocols such as LACP, VRRP or others to achieve a highly available network connection.
+__we recommend that the network architecture identify any single points of failure and provide some level of redundancy or fault tolerance.__
+__we recommend you design a load balancing solution within the network architecture to accommodate for these requirements.__
+

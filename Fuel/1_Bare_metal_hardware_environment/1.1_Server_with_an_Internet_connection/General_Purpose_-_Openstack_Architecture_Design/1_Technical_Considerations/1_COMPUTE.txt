@@ -1,0 +1,29 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-12T10:09:46+02:00
+
+====== 1 COMPUTE ======
+Created Tuesday 12 April 2016
+
+			**-** selecting a processor:
+					- features and performance characteristics (features can have a significant impact on the performance of your virtual machine):
+						[ ] hardware-assisted virtualization
+						[ ] memory paging (EPT shadowing)
+			**-** number of processors:
+			
+			**-** amount of memory:
+				- Overcommit ratio:
+					(the ratio of available virtual resources to available physical resources, CPU and memory)
+						16vCPU : 1CPU   1.5vRAM: 1RAM
+			**-** compute requirements of non-hypervisor nodes (resource nodes = controller, object storage, and block storage nodes, and networking services):
+				 - number of processor cores:
+				 - number of threads:
+				
+			**-** quantity of storage required for each hypervisor:
+			
+			**-** provide compute resources in: 
+				[ ] a single pool or
+				[*] in multiple pools. (bin packing) 
+					* A compute design that allocates multiple pools of resources makes best use of application resources
+					* Requires a common hardware design
+					  This makes it easier to //deploy//, //support//, and //maintain// nodes throughout their lifecycle.

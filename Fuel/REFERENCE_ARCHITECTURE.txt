@@ -1,0 +1,34 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-12T15:24:46+02:00
+
+====== REFERENCE ARCHITECTURE ======
+Created Tuesday 12 April 2016
+https://docs.mirantis.com/openstack/fuel/fuel-7.0/reference-architecture.html#openstack-environment-architecture
+
+In Fuel, you can deploy an environment with a single controller node and then add extra ones.
+
+The OpenStack environment consists of multiple physical server nodes (or an equivalent VM), each of which is one of the following node types:
+
+**Controller**:
+    The Controller manages all activities in the environment. The nova-controller maintains the life cycle of the OpenStack controller.
+
+	**HA** environment must consist of at least 3 controllers in order to achieve HA for MySQL/Galera cluster. 
+
+**Compute**:
+    Compute servers are the workhorses of your installation; they are the servers on which your users' virtual machines are created. nova-compute controls the life cycle of these VMs; Neutron Agent and Ceilometer Compute Agent may also run on Compute nodes.
+
+**Storage:**
+    OpenStack requires block and object storage to be provisioned. These __can be provisioned as Storage nodes or as roles that run on Compute nodes__.
+	
+	__The key principle is that your controller(s) are separate from the compute servers on which your user's VMs run.__
+
+
+==== Details of Multi-node with HA Deployment ====
+
+A **virtual IP address** (VIP or VIPA) is an IP address that doesn't correspond to an actual physical network interface (port). Uses for VIPs include Network Address Translation (especially, One-to-many NAT), fault-tolerance, and mobility.HAProxy
+
+**HAProxy** provides load balancing, proxying, and high availability in a Mirantis OpenStack environment. Each OpenStack controller runs HAProxy, which manages a single External Virtual IP (VIP) for all controller nodes and provides HTTP and TCP load balancing of requests going to OpenStack API services, RabbitMQ, and MySQL.
+
+**Pacemaker**
+High-availability resource manager for Linux based clusters. Fuel uses Packemaker with Corosync to implement HA for OpenStack services.

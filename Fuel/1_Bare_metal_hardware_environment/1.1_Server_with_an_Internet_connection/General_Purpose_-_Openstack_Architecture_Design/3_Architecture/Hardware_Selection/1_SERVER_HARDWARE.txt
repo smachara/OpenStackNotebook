@@ -1,0 +1,32 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-12T10:47:07+02:00
+
+====== 1 SERVER HARDWARE ======
+Created Tuesday 12 April 2016
+
+== Evaluate server hardware around four conflicting dimensions: ==
+		**Server density: **A measure of how many servers can fit into a given measure of physical space, such as a rack unit [U].
+		
+		**Resource capacity: **The number of CPU cores, amount of RAM, or amount of deliverable storage.
+		
+		**Expandability: **Limit of additional resources you can add to a server.
+		
+		**Cost: **The relative purchase price of the hardware weighted against the level of design effort needed to build the system. 
+			
+			The following list outlines the form factors to choose from:
+			
+			* Blade servers typically support dual-socket multi-core CPUs. Blades also offer outstanding density.
+			* 1U rack-mounted servers occupy only a single rack unit. Their benefits include high density, support for dual-socket multi-	core CPUs, and support for reasonable RAM amounts. This form factor offers limited storage capacity, limited network capacity, and limited expandability.
+			* 2U rack-mounted servers offer the expanded storage and networking capacity that 1U servers tend to lack, but with a corresponding decrease in server density (half the density offered by 1U rack-mounted servers).
+			* Larger rack-mounted servers, such as 4U servers, will tend to offer even greater CPU capacity, often supporting four or even eight CPU sockets. These servers often have much greater expandability so will provide the best option for upgradability. This means, however, that the servers have a much lower server density and a much greater hardware cost.
+			* Sled servers are rack-mounted servers that support multiple independent servers in a single 2U or 3U enclosure. This form factor offers increased density over typical 1U-2U rack-mounted servers but tends to suffer from limitations in the amount of storage or network capacity each individual server supports.
+
+		**Instance density:** The expected or anticipated number of instances that each hypervisor can host.
+		**Host density: 	 **The number of hosts (or hypervisors) that can be fitted into a given metric (rack, rack unit, or floor tile). 
+							Floor weight is an often overlooked consideration.
+		**Power density: **Data centers have a specified amount of power fed to a given rack or set of racks. 
+							Recent data centers can be architected to support power densities as high as 120 AMP per rack. 
+		**Network **
+		**connectivity: 	 **The selected server hardware must have the appropriate number of network connections, as well as 
+							the right type of network connections. minimum at least two diverse network connections coming into each rack. 

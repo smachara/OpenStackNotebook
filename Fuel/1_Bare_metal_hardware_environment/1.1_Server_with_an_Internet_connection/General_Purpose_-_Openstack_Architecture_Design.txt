@@ -1,0 +1,30 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-11T15:45:36+02:00
+
+====== General Purpose - Openstack Architecture Design ======
+Created Monday 11 April 2016
+
+Before you install Fuel and OpenStack, determine: 
+	* what type of configuration addresses your business needs.
+	* calculate resources required to process estimated workloads
+ 
+For a production environment, you must decide on the following
+	[ ] Network topology and IP address management plan
+	[ ] Storage
+	[ ] Number, type, and flavor of compute, controller, storage, and other nodes
+	[ ] Monitoring facilities
+	[ ] Additional components: Sahara and Murano
+	[ ] Fuel plug-ins
+
+-------------------------
+	
+	**Lab environment like a **[[http://docs.openstack.org/arch-design/generalpurpose.html|general purpose]]** production environment. GPPE**
+	Infrastructure-as-a-Service (IaaS) model;
+	
+	Workload can be unpredictable in a general purpose cloud, 
+
+	[[+0 Business requirements]]
+	[[General Purpose - Openstack Architecture Design:1 Technical Considerations]]
+	[[General Purpose - Openstack Architecture Design:2 Operational Considerations]]
+	[[General Purpose - Openstack Architecture Design:3 Architecture]]

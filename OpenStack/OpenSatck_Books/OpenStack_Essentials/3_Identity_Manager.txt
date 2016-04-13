@@ -1,0 +1,31 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-25T12:19:36+01:00
+
+====== 3 Identity Manager ======
+Created Friday 25 March 2016
+
+==== Services and endpoints ====
+	In Keystone:
+		a Service = 	a record of another OpenStack component that will need to be contacted
+						    to manage virtual resources. 
+		an Endpoints = the URLs to contact these services.
+
+
+keystonerc_admin file  = inf. to authenticate and interact with OpenStack
+
+command line
+
+
+		control# cat keystonerc_admin
+		control# source keystonerc_admin
+		control# keystone service-list
+		control# keystone endpoint-list
+
+
+==== Hierarchy of users, tenants, and roles ====
+
+
+control# keystone user-list
+control# keystone tenant-list
+control# keystone user-role-list --user nova --tenant services

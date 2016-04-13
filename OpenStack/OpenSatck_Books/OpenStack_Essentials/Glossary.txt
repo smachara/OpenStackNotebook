@@ -1,0 +1,58 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-16T13:32:13+01:00
+
+====== Glossary ======
+Created Wednesday 16 March 2016
+
+=== instances: ===
+
+=== Hypervisor: ===
+
+==== Public IP address ====
+	A public IP address is the address that is assigned to a computing device to allow direct access over the Internet. 
+
+==== Private network ====
+	A private IP address is the address space allocated by InterNIC to allow organizations to create their own private network.
+	https://en.wikipedia.org/wiki/Private_network
+{{~/Images/Screenshot from 2016-03-29 10:28:59.png}}
+
+==== Bare-metal installation ====
+	A bare metal environment is a computer system or network in which a virtual machine is installed directly on hardware rather than within the host operating system (OS). The term "bare metal" refers to a hard disk, the usual medium on which a computer's OS is installed.
+
+==== vSphere, ESXi and vCenter ====
+	VMware Inc. is a software company that develops many suites of software products specially for providing various virtualization solutions.
+	
+	=== vSphere ===
+		is a software suite that comes under data center product.
+		ESXi, vSphere client and vCenter are components of vSphere.
+		
+		== ESXi  ==
+			is the virtualization server.
+			 **ESXi is a hypervisor installed on a physical machine**
+		
+		== vCenter server  ==
+		is a centralized management application that lets you manage virtual machines and ESXi hosts centrally.
+
+
+=== MTU ===
+	Maximum Transmission Unit of a communications protocol of a layer is the size (in bytes or octets) of the largest protocol data unit that the layer can pass onwards
+	MTU parameters usually appear in association with a communications interface (NIC, serial port, etc.). 
+
+=== OpenStack cluster: ===
+
+
+=== OpenStack resources: ===
+
+==== tenants: = project ====
+
+		A tenant is simply a grouping of objects. Users, instances, and networks are examples of objects.
+
+		Everything in OpenStack must exist in a tenant
+		
+		On the command line, the term tenant is used. In the web interface, the term project is used.
+		
+
+==== Cluster: ====
+
+==== Puppet: ====

@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-11T15:56:09+02:00
+
+====== 3 Architecture ======
+Created Monday 11 April 2016
+
+===== Architecture =====
+	general purpose OpenStack cloud should reflect a cloud with **no pre-defined usage model**
+	
+[[+Hardware Selection]]    
+[[+Software selection]]

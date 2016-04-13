@@ -1,0 +1,19 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-11T15:42:38+02:00
+
+====== 0 Business requirements ======
+Created Monday 11 April 2016
+
+===== Business requirements =====
+		* Business requirements
+			* Cost
+			* Time to market
+			* Revenue opportunity
+		Technical requirements
+			* Performance
+			* No predefined usage model
+			* On-demand and self-service application
+			* Public cloud
+			* Internal consumption (private) cloud
+			* Security

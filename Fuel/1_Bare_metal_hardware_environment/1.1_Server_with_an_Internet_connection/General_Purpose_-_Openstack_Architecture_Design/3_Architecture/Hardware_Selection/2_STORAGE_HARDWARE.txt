@@ -1,0 +1,46 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-12T10:47:46+02:00
+
+====== 2 STORAGE HARDWARE ======
+Created Tuesday 12 April 2016
+
+**Cost **The trade-off is potentially higher support costs and a greater risk of incompatibility and interoperability issues.
+
+**Scalability :**It might be difficult to predict the final intended size of the implementation as there are no established usage patterns for a general purpose cloud. It might become necessary to expand the initial deployment in order to accommodate growth and user demand.
+
+**Expandability: **A storage solution that expands to 50 PB is considered more expandable than a solution that only scales to 10 PB. This meter is related to scalability, which is the measure of a solution’s performance as it expands. 
+
+**Connectivity**
+    Ensure that, if storage protocols other than Ethernet are part of the storage solution, the appropriate hardware has been selected. If a centralized storage array is selected, ensure that the hypervisor will be able to connect to that storage array for image storage.
+
+**Usage** Some of the configurations that will influence the architecture include whether it will be used by the hypervisors for ephemeral instance storage or if OpenStack Object Storage will use it for object storage.
+
+**Instance and image locations**
+    Where instances and images will be stored will influence the architecture.
+
+**Server hardware**
+    If the solution is a scale-out storage architecture that includes DAS, it will affect the server hardware selection. This could ripple into the decisions that affect host density, instance density, power density, OS-hypervisor, management tools and others. 
+
+**Capacity**
+    Hardware resources selected for the 
+	//resource nodes should// 				-> __supporting enough storage for the cloud services__. 
+	//object storage should// 				-> __support a large number of inexpensive disks with no reliance on RAID__ controller cards.
+	//block storage should// 				-> __be capable of supporting high speed storage solutions and RAID__ 
+	//Selecting hardware RAID controllers that// 	-> __automatically repair damaged arrays__
+
+**Performance**
+	//object storage				->// services __do not need to be fast performing disks__. 
+	//block storage				//-> services should take advantage of performance boosting features 
+											(__use of SSDs or flash storage to provide high performance block storage pools)__
+	//performance of ephemeral disks ->// used for instances should also be taken into consideration.
+	
+	We recommend that object storage nodes take advantage of the best cost per terabyte available for storage. 
+
+**Fault tolerance**
+     //Object storage resource nodes	//->have no requirements for hardware fault tolerance or RAID controllers. 
+	//Block storage nodes//, 	 |
+	compute nodes, 		 |> should all have fault tolerance built in at the hardware level by making use of hardware RAID controllers
+and cloud controllers 	 | 
+  
+				The level of RAID chosen should be consistent with the performance and availability requirements of the cloud.

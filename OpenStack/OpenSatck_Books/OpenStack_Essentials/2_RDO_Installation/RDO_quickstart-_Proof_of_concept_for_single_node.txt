@@ -9,9 +9,8 @@ Created Tuesday 22 March 2016
 
 [*] $ sudo yum install -y https://www.rdoproject.org/repos/rdo-release.rpm
 [*] $ sudo yum update -y
-[ ] $ sudo yum install -y openstack-packstack
+[*] $ sudo yum install -y openstack-packstack
 [ ] $ packstack --allinone
-
 
 [ ] web interface Horizon by going to http://$YOURIP/dashboard. 
 The user name is admin. The password can be found in the file keystonerc_admin in the /root directory of the control node.
