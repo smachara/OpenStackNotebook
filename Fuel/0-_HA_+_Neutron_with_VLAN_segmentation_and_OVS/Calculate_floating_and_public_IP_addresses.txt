@@ -1,0 +1,60 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-19T10:16:25+02:00
+
+====== Calculate floating and public IP addresses ======
+Created Tuesday 19 April 2016
+	
+	
+	==== OpenStack environment requirements: ====
+
+    
+	**Value** 		**Parameter**
+		7 		nodes in total
+						* 1 server as Fuel Node
+						* 3 servers as Controller Node
+						* 1 server as Cinder Node
+						* 2 servers as Compute Node 
+		4 		Number of virtual routers for all the tenants. The virtual routers must be connected to the external network.
+		
+		32 		Number of virtual machines that require direct access to the external network
+						Amount of RAM per VM 	4 GB RAM with dynamic allocation for up to 12 GB
+						Local storage per VM 	150 GB
+						Persistent volume storage per VM 	500 GB
+						**virtual machines per compute node** = //number of virtual machines/number of servers//
+						32/2 = 16
+		3 		Number of extra IP addresses. Typically, this value equals 3 and includes the following:
+						* 1 virtual IP address for virtual router
+						* 1 public virtual IP address
+						* 1 IP address for default gateway
+
+**public IP range: **[(number of controller nodes + number of zabbix nodes) + number of extra IP addresses]
+	number of controller nodes = 3
+	number of zabbix nodes = 0
+	number of extra IP addresses = 3
+	
+	[(3 + 0) + 3] = 6
+ 
+**floating IP range without DVR:**  [number of virtual routers for all tenants + number of VMs]
+
+	number of virtual routers for all tenants = 4
+	number of VMs = 32
+	
+	[4 + 32] = 36
+	
+**floating IP range with DVR:**
+	* **For VLAN segmentation:** (number of controller nodes + number of extra IP addresses) + number of compute nodes
+			number of controller nodes = 3
+			number of extra IP addresses = 3
+			number of compute nodes = 2
+			
+			(3 + 3) + 2 = 8
+
+	* **For GRE segmentation:** (number of controller nodes + number of other nodes + number of extra IP addresses) + number of compute nodes
+
+			number of controller nodes = 3
+			number of other nodes = 4
+			number of extra IP addresses = 3
+			number of compute nodes = 2
+
+			(3 + 4 + 3) + 2 = 12

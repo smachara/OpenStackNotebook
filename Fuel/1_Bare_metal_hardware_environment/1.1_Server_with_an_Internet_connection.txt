@@ -21,3 +21,7 @@ Created Wednesday 06 April 2016
 
 
 
+
+    Number of virtual machines
+    Applications that you plan to run on these virtual machines
+    Types of workloads

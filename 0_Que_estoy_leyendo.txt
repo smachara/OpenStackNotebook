@@ -1,0 +1,43 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-18T10:18:05+02:00
+
+====== 0 Que estoy leyendo ======
+Created Monday 18 April 2016
+esto es oro 
+	https://docs.mirantis.com/openstack/fuel/fuel-7.0/reference-architecture.html#nodes-roles-arch
+	https://docs.mirantis.com/openstack/fuel/fuel-7.0/planning-guide.html
+[ ] Pendiente
+[*] Listo
+[x] Voy por aqui
+[ ] **leer mas tarde**
+[ ] __Volver a leer__
+
+[ ] Mirantis OpenStack Planning Guide https://docs.mirantis.com/openstack/fuel/fuel-8.0/mos-planning-guide.html
+	[*] OpenStack environment architecture [[https://docs.mirantis.com/openstack/fuel/fuel-8.0/mos-planning-guide.html#intro-os-env-arch|https://docs.mirantis.com/openstack/fuel/fuel-8.0/]][[mos-planning-guide.html#intro-os-env-arch]]
+	[*] Introduction to Fuel
+	[*] Overview of the planning process https://docs.mirantis.com/openstack/fuel/fuel-8.0/mos-planning-guide.html#intro-overview
+		[x] Fuel system requirements https://docs.mirantis.com/openstack/fuel/fuel-8.0/mos-planning-guide.html#fuel-sys-req-pg
+			[*] Network requirements
+				[*] Calculate floating and public IP addresses https://docs.mirantis.com/openstack/fuel/fuel-8.0/mos-planning-guide.html#calculate-float-public-ip
+			[*] Public and floating IP address requirements
+			[x] Switching requirements 
+			[ ] Routing requirements
+			[ ] Fuel Master node hardware requirements
+			[ ] Fuel Slave nodes hardware recommendations
+		[ ] Fuel reference architecture overview https://docs.mirantis.com/openstack/fuel/fuel-8.0/mos-planning-guide.html#fuel-ref-arch
+		[ ] Plan the network https://docs.mirantis.com/openstack/fuel/fuel-8.0/mos-planning-guide.html#network
+	//Prepare an IP address management plan and network association.//
+		[ ] Plan the storage https://docs.mirantis.com/openstack/fuel/fuel-8.0/mos-planning-guide.html#storage
+	//Determine how many nodes to deploy and which roles to assign to each and the high availability to implement.//
+		[ ] Plan the monitoring tools https://docs.mirantis.com/openstack/fuel/fuel-8.0/mos-planning-guide.html#monitoring
+		[ ] Plan a Hadoop cluster (Sahara) https://docs.mirantis.com/openstack/fuel/fuel-8.0/mos-planning-guide.html#hadoop
+		[ ] Plan the vSphere integration https://docs.mirantis.com/openstack/fuel/fuel-8.0/mos-planning-guide.html#vsphere
+		[ ] Calculate hardware resources https://docs.mirantis.com/openstack/fuel/fuel-8.0/mos-planning-guide.html#calculate-hardware-resources
+
+
+
+
+
+
+

@@ -1,0 +1,41 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-13T11:09:53+02:00
+
+====== Calculate hardware resources ======
+Created Wednesday 13 April 2016
+https://docs.mirantis.com/openstack/fuel/fuel-8.0/mos-planning-guide.html
+https://docs.mirantis.com/openstack/fuel/fuel-8.0/mos-planning-guide.html#calculate-hardware-resources
+
+===== Environment prerequisites  =====
+Number of VMs 					100
+Amount of RAM per VM 				4 GB RAM with dynamic allocation for up to 12 GB
+Local storage per VM 				150 GB
+Persistent volume storage per VM 		500 GB
+Total persistent storage (object or block) 	50 TB
+
+Compute units 						6 compute nodes with 2 sockets, 8 cores per socket, 2 GHz
+Network requirements 	
+•     At least 100 Mbit/sec per VM
+•     High availability
+•     Latency-insensitive network storage
+ 
+
+===== Calculate CPU =====
+
+	1. **number of CPU cores per virtual machine** = max GHz/(number of GHz per core x 1.3) 
+																					//If you do not use hyper-threading, use 2 instead.//
+	2. **total number of CPU cores** = (number of VMs x number of GHz per VM)/number of GHz per core. 
+	3. **number of sockets** = total number of CPU cores/number of cores per socket
+	4. Round the number of sockets up to the next even number.
+	5. **number of servers **= total number of sockets/number of sockets per server
+	6. **number of virtual machines per compute node** = number of virtual machines/number of servers //(Round this result to the whole number)//
+
+===== Calculate memory =====
+
+	1. **total amount of RAM per compute node =** amount of RAM per VM x number of VMs per compute node
+	2. **RAM required to accommodate the core operating system operations =** total amount of RAM per compute node + RAM for core OS operations
+	3. Round the amount of RAM you calculated in step 2 to the number that fits your server configuration and your selection of computer memory modules.
+	
+	For example, for a 2 CPU socket board that typically has 16 memory slots and 16 GB memory modules, you assign 256 GB RAM.
+
