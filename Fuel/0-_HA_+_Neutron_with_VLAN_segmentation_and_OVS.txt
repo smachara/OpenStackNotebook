@@ -16,7 +16,7 @@ Created Monday 18 April 2016
     Connection to the Internet or/and DC network via a router called Gateway and IP 172.16.1.1
 
 === Node servers roles: ===
-
+Network Conf Plan 
     1 server as Fuel Node
     3 servers as Controller Node
     1 server as Cinder Node
@@ -37,9 +37,10 @@ Created Monday 18 April 2016
     Gateway 192.168.111.1
     DNS 8.8.4.4, 8.8.8.8
     Tunnel ID range 2 - 65535
-    Management network 192.168.0.0/24 in VLAN 101
-    Storage network 192.168.1.0/24 in VLAN 102
-    Administrative network (for Fuel) 10.20.0.0/24 in VLAN 103
+  
+  Management network 192.168.0.0/24 in VLAN 101
+  Storage network 192.168.1.0/24 in VLAN 102
+  Administrative network (for Fuel) 10.20.0.0/24 in VLAN 103
 
 === Network Parameters ===
 

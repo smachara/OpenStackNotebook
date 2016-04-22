@@ -7,6 +7,7 @@ Created Monday 18 April 2016
 esto es oro 
 	https://docs.mirantis.com/openstack/fuel/fuel-7.0/reference-architecture.html#nodes-roles-arch
 	https://docs.mirantis.com/openstack/fuel/fuel-7.0/planning-guide.html
+	VLANS http://www.tp-link.es/faq-328.html
 [ ] Pendiente
 [*] Listo
 [x] Voy por aqui
@@ -21,11 +22,11 @@ esto es oro
 			[*] Network requirements
 				[*] Calculate floating and public IP addresses https://docs.mirantis.com/openstack/fuel/fuel-8.0/mos-planning-guide.html#calculate-float-public-ip
 			[*] Public and floating IP address requirements
-			[x] Switching requirements 
-			[ ] Routing requirements
-			[ ] Fuel Master node hardware requirements
-			[ ] Fuel Slave nodes hardware recommendations
-		[ ] Fuel reference architecture overview https://docs.mirantis.com/openstack/fuel/fuel-8.0/mos-planning-guide.html#fuel-ref-arch
+			[*] __Switching requirements__ 
+			[*] __Routing requirements__
+			[*] Fuel Master node hardware requirements
+			[*] Fuel Slave nodes hardware recommendations
+		[*] Fuel reference architecture overview https://docs.mirantis.com/openstack/fuel/fuel-8.0/mos-planning-guide.html#fuel-ref-arch
 		[ ] Plan the network https://docs.mirantis.com/openstack/fuel/fuel-8.0/mos-planning-guide.html#network
 	//Prepare an IP address management plan and network association.//
 		[ ] Plan the storage https://docs.mirantis.com/openstack/fuel/fuel-8.0/mos-planning-guide.html#storage
@@ -34,10 +35,3 @@ esto es oro
 		[ ] Plan a Hadoop cluster (Sahara) https://docs.mirantis.com/openstack/fuel/fuel-8.0/mos-planning-guide.html#hadoop
 		[ ] Plan the vSphere integration https://docs.mirantis.com/openstack/fuel/fuel-8.0/mos-planning-guide.html#vsphere
 		[ ] Calculate hardware resources https://docs.mirantis.com/openstack/fuel/fuel-8.0/mos-planning-guide.html#calculate-hardware-resources
-
-
-
-
-
-
-

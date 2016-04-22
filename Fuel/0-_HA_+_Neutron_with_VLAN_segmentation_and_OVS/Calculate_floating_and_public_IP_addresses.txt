@@ -4,9 +4,9 @@ Creation-Date: 2016-04-19T10:16:25+02:00
 
 ====== Calculate floating and public IP addresses ======
 Created Tuesday 19 April 2016
-	
-	
-	==== OpenStack environment requirements: ====
+
+
+==== OpenStack environment requirements: ====
 
     
 	**Value** 		**Parameter**
@@ -37,7 +37,7 @@ Created Tuesday 19 April 2016
  
 **floating IP range without DVR:**  [number of virtual routers for all tenants + number of VMs]
 
-	number of virtual routers for all tenants = 4
+	number of virtual routers for all tenants = 4  (1 es suficiente)
 	number of VMs = 32
 	
 	[4 + 32] = 36
