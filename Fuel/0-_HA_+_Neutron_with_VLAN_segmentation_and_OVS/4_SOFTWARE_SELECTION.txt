@@ -24,11 +24,21 @@ Created Tuesday 12 April 2016
 					[ ] Bare-metal
 				- Selection of OpenStack software components
 					[*] Compute service (nova)
+ 
+					[*] Image storage service (glance)
+					[*] Block Storage service (cinder).
+					[*] unified object, block, and file storage (Ceph).
+					[x] Object Storage service (swift).
+					[x] Block Storage service Logical Volume Manager(LVM).
+  
+					[*] ephemeral storage (ceph/MySql)
 					[*] Networking service (neutron)
-					[*] Image service (glance)
-					[*] Identity service (keystone)
+
 					[*] Dashboard (horizon)
-					[*] Telemetry service (ceilometer)
-					[*] Object Storage service (swift). 
-					[*] Block Storage service (cinder). 
+					[*] Identity service (keystone)
+					[*] Telemetry service (Ceilometer/MongoDB)
+  
+ 
 			    - Selection of supplemental software
+{{../../../openstack_havana_conceptual_arch.png}}
+

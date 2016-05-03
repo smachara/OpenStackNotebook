@@ -5,6 +5,15 @@ Creation-Date: 2016-01-23T22:06:53+01:00
 ====== zMisc ======
 Created Saturday 23 January 2016
 
+**Telemety**
+reliably collect data on the utilization of the physical and virtual resources comprising deployed clouds, persist these data for subsequent retrieval and analysis, and trigger actions when defined criteria are met. 
+
+**Monitoring**
+a device or arrangement for observing, detecting, or recording the operation of a machine or system, especially an automatic control system. 
+
+**trending**
+the general course or prevailing tendency; 
+
 ssh -X ubuntu@157.159.249.172
 ssh -X ubuntu@10.142.90.6
 
