@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="5cm" height="6cm" viewBox="366 92 85 117" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 4; stroke: #000000" d="M 387.774 121.681 C 525,145 338,156 428.531,179.914"/>
+    <polygon style="fill: #000000" points="370.492,127.873 373.508,110.127 391.253,113.143 388.238,130.888 "/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 4; stroke: #000000" x1="377.857" y1="138.253" x2="383.888" y2="102.762"/>
+    <polygon style="fill: #000000" points="446.299,175.298 441.701,192.702 424.298,188.105 428.895,170.701 "/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 4; stroke: #000000" x1="439.895" y1="164.298" x2="430.701" y2="199.105"/>
+  </g>
+  <image x="393" y="110" width="31" height="31" xlink:href="file:///C:/MyNotes/OpenStackNotebook/DIAGRAMS/icons-collection/cancel.svg"/>
+</svg>
