@@ -1,0 +1,32 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-05-20T10:41:28+02:00
+
+====== Use SFTP to Securely Transfer Files with a Remote Server ======
+Created Friday 20 May 2016
+
+**Use SFTP to Securely Transfer Files with a Remote Server**
+				https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server
+			* Connect with SFTP
+				sftp username@remote_hostname_or_IP
+			* Navigating with SFTP
+				pwd (Remote working directory: /home/demouser)
+				ls
+				ls -la
+				cd testDirectory
+				lpwd (Local working directory: /Users/demouser)
+				lls
+				lcd Desktop
+			* Transferring Remote Files to the Local System
+				get remoteFile
+				get remoteFile localFile
+				get -r someDirectory
+				get -Pr someDirectory
+			* Transferring Local Files to the Remote System
+				put localFile
+				put -r localDirectory 
+			* Others
+				!
+				df -h
+				help
+				exit

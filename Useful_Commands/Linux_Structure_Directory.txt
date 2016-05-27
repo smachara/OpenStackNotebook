@@ -1,0 +1,23 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-05-26T13:52:33+02:00
+
+====== Linux Structure Directory ======
+Created Thursday 26 May 2016
+
+1. / – Root
+2. /bin – User Binaries
+3. /sbin – System Binaries
+4. /etc – Configuration Files
+5. /dev – Device Files
+6. /proc – Process Information
+7. /var – Variable Files
+8. /tmp – Temporary Files
+9. /usr – User Programs
+10. /home – Home Directories
+11. /boot – Boot Loader Files
+12. /lib – System Libraries
+13. /opt – Optional add-on Applications
+14. /mnt – Mount Directory
+15. /media – Removable Media Devices
+16. /srv – Service Data
