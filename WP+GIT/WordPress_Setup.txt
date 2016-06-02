@@ -1,0 +1,84 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-05-26T11:22:52+02:00
+
+====== WordPress Setup ======
+Created Thursday 26 May 2016
+
+===== Step One =====
+ **— Create a MySQL Database and User for WordPress**
+	# mysql -u root -p
+		CREATE DATABASE wordpress;
+		CREATE USER wpsqlncf@localhost IDENTIFIED BY 'password';
+		GRANT ALL PRIVILEGES ON wordpress.* TO wpsqlncf@localhost;
+		FLUSH PRIVILEGES;
+		exit
+		
+===== Step Two =====
+ **— Download WordPress**
+		# cd ~
+		# wget http://wordpress.org/latest.tar.gz
+		# tar xzvf latest.tar.gz
+
+		# sudo apt-get update
+		# sudo apt-get install php5-gd libssh2-php
+
+
+===== Step Three =====
+ **— Configure WordPress**
+	# cd ~/wordpress
+	# cp wp-config-sample.php wp-config.php
+	# nano wp-config.php
+		* settings for DB_NAME, DB_USER, and DB_PASSWORD
+			/** The name of the database for WordPress */
+			define('DB_NAME', 'wordpress');
+			
+			/** MySQL database username */
+			define('DB_USER', 'wpsqlncf');
+			
+			/** MySQL database password */
+			define('DB_PASSWORD', 'password');
+
+
+===== Step Four =====
+ **— Copy Files to the Document Root**
+	# sudo rsync -avP ~/wordpress/ /var/www/html/
+	# cd /var/www/html
+	# sudo chown -R wpncf:www-data *
+	# mkdir /var/www/html/wp-content/uploads
+	#sudo chown -R :www-data /var/www/html/wp-content/uploads
+
+
+===== Step Five =====
+ **— Complete Installation through the Web Interface**
+	http://server_domain_name_or_IP
+	http://157.159.232.160  
+		* Site Title= NCF tips and tricks NCF-T&T
+		* Username = ncftnt	
+		* Password 	
+		* Your Email = samer.machara@telecom-sudparis.eu 	
+		* Search Engine Visibility = 	Discourage (true)
+
+===== Step Six (Optional) =====
+ **— Configure Pretty Permalinks for WordPress**
+		* **Modifying Apache to Allow URL Rewrites**
+			# sudo nano /etc/apache2/sites-available/000-default.conf
+					<VirtualHost *:80>
+						ServerAdmin webmaster@localhost
+						DocumentRoot /var/www/html
+						ServerName server_domain_name_or_IP
+						<Directory /var/www/html/>
+						        AllowOverride All
+						</Directory>
+						. . .
+				* CTRL-X , Y, ENTER 
+			# sudo a2enmod rewrite
+			# sudo service apache2 restart
+		* **Create an .htaccess File**
+			# touch /var/www/html/.htaccess
+			# sudo chown :www-data /var/www/html/.htaccess
+			# chmod 664 /var/www/html/.htaccess
+			(WordPress to automatically update this file with rewrite rules)
+		* **Change the Permalink Settings in WordPress**
+			Settings menu, you can select Permalinks:
+				Permalinks Settings =  Post name

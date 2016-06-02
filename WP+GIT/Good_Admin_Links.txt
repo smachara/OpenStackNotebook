@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-05-27T15:40:26+02:00
+
+====== Good Admin Links ======
+Created Friday 27 May 2016
+
+
+==== How to Fix the Error Establishing a Database Connection in WordPress ====
+http://www.wpbeginner.com/wp-tutorials/how-to-fix-the-error-establishing-a-database-connection-in-wordpress/
+
+==== Reset a lost MySQL root password ====
+https://support.rackspace.com/how-to/mysql-resetting-a-lost-mysql-root-password/
+

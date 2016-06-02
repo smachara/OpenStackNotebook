@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-05-19T12:53:25+02:00
+
+====== Server's Public IP Address ======
+Created Thursday 19 May 2016
+
+		ip addr show eth0 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//'

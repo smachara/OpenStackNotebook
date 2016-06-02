@@ -1,0 +1,86 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-05-27T10:45:07+02:00
+
+====== Git Setup ======
+Created Friday 27 May 2016
+
+=== Step One ===
+	**Set Up Git**
+		# sudo apt-get update
+		# sudo apt-get install git
+
+
+=== Step Two ===
+	**Setting Up the Server**
+
+		**Init repository ()**
+			# git init ncfNotebook
+			# cd ncfNotebook
+			# git config --global push.default simple
+			# git config --global user.email "gitncf@157.159.232.160"
+			# git config --global user.name "Git User"
+			# touch README.md
+			# git add .
+			# git commit -m 'initial commit'
+
+			* __Error if you don't have added and committed at least once, there won't be a local master branch to push to. that is why I create a repository and then I clone it in a bare one.__
+		**Putting the Bare Repository on a Server**
+			# sudo mkdir /var/git/
+			# cd /var/git/
+			# sudo git clone --bare --shared ~/ncfNotebook/ ncfNotebook.git
+
+				__--shared option automatically add group write permissions to a repository.__
+				__--bare option,  Central repositories should always be created as bare repositories because pushing branches to a non-bare repository has the potential to overwrite changes.__
+				
+
+=== Step Three ===
+	**Access Control SSH Protocol**
+		
+		**Create a single git user on the server**
+			# sudo adduser gitncf
+			# sudo chown -R gitncf:gitncf /var/git/ncfNotebook.git
+
+			# su gitncf
+			# cd
+			# mkdir .ssh && chmod 700 .ssh
+			# touch .ssh/authorized_keys && chmod 600 .ssh/authorized_keys
+	
+	 **Restrict the git user to only doing Git activities**
+		* see if `git-shell` is already in there.  If not...
+			# cat /etc/shells   
+		* make sure git-shell is installed on your system.
+			# which git-shell  
+		* and add the path to git-shell from last command
+			# sudo nano /etc/shells 
+		* and enter the path to git-shell, usually: /usr/bin/git-shell
+			$ sudo chsh gitncf 
+			
+	**Generating Your SSH Public Key**
+		Each user must provide a public key.
+			$ ssh-keygen
+			$ cat ~/.ssh/samer.gitncf.pub
+
+	**Add that key to the ~/.ssh/authorized_keys file of the git user.**
+		* Append pub key to the authorized_keys field:
+			# cat /tmp/samer.gitncf.pub >> ~/.ssh/authorized_keys
+		or 
+			# nano ~/.ssh/authorized_keys
+			* Ctrl-V
+			* CTRL-X , Y, ENTER
+
+=== Step Four ===
+	**Clone it down and push changes back up just as easily**
+		__$ git clone gitncf@157.159.232.160:/var/git/ncfNotebook.git__
+	**Test Push**
+			$ git config --global push.default simple
+			$ git config --global user.email "samer.machara@telecom-sudparis.eu"
+			$ git config --global user.name "Samer MACHARA"
+			$ touch TestFile.txt
+			$ git add .
+			$ git commit -m 'my first commit'
+			$ git push origin master
+
+Source: 
+	Git repository access control: https://wincent.com/wiki/Git_repository_access_control
+	Git on the Server - Setting Up the Server: https://git-scm.com/book/en/v2/Git-on-the-Server-Setting-Up-the-Server

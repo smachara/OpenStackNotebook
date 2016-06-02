@@ -1,0 +1,237 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-05-26T11:15:36+02:00
+
+====== Prerequisites ======
+Created Thursday 26 May 2016
+
+=== Initial server setup ===
+
+		1. — Root Login
+			# sudo ssh -i adminncf.pem ubuntu@157.159.232.153
+			# sudo ssh -i adminncf.pem ubuntu@157.159.232.160
+		2. — Create a New User
+			[[+generate secure password]]
+			# sudo //adduser wpncf//
+		3. — Root Privileges
+			# sudo gpasswd -a //wpncf// sudo
+			[[+list all super users]]
+		4. — Add Public Key Authentication
+			a. Generate a Key Pair
+				local$ //ssh-keygen//
+					the key (/home/samer/.ssh/id_rsa): wpadminncf
+					passphrase: (empty): 
+			b. Copy the Public Key to the clipboard
+				local$ //cat ~/wpadminncf.pub//
+			c. Add Public Key to //wpncf //Remote User
+				# su - demo
+     # //mkdir .ssh//
+     # //chmod 700 .ssh//
+				# //nano .ssh/authorized_keys// 
+					* Insert your public key by pasting it into the editor
+					* CTRL-X , Y, ENTER
+				# //chmod 600 .ssh/authorized_keys//
+		5. — Configure SSH Daemon (disable root login through SSH)
+				 # //nano /etc/ssh/sshd_config//
+					* Find the line that looks like this
+						 //PermitRootLogin yes// ( without-password )
+					* Modify this line to "no" 
+						//PermitRootLogin no//
+					* CTRL-X , Y, ENTER 
+		* —  Reload SSH
+				 # //service ssh restart//
+		**Important:**__Test__
+				Before disconnect test 
+				Open a new terminal window on your local machine
+					local$ //ssh -i wpadminncf wpncf@157.159.232.160 
+
+
+=== Additional Recommended Steps ===
+		1. Configuring a Basic Firewall
+			
+			__Our basic strategy will be to lock down everything that we do not have a good reason to keep open.                          __ 
+			
+			ssh 		# sudo ufw allow ssh
+			http 		# sudo ufw allow 80/tcp
+			ssl/tls 	# sudo ufw allow 443/tcp
+			smtp 	# sudo ufw allow 25/tcp
+			mysql	# sudo ufw  allow 3306/tcp 
+			ftp		# sudo ufw  allow 21/tcp 
+			ftp		# sudo ufw  allow 20/tcp 
+			
+			# sudo ufw show added
+			# sudo ufw enable
+			
+			~~# sudo ufw disable~~
+			~~# sudo ufw deny ARG~~
+		2. Configure Timezones and Network Time Protocol Synchronization
+			a. Configure Timezones   
+				# sudo dpkg-reconfigure tzdata
+						Europe
+						Paris
+			b. Configure NTP Synchronizatio:
+				 The daemon will start automatically each boot and will continuously adjust the system time to be in-line with the global NTP servers throughout the day. This will allow your computer to stay in sync with other servers.
+
+				# //sudo apt-get update//
+				# //sudo apt-get install ntp//
+		3. Protect SSH with Fail2Ban (ToDo: if apply)
+				https://www.digitalocean.com/community/tutorials/how-to-protect-ssh-with-fail2ban-on-ubuntu-14-04
+
+
+=== Install LAMP ===
+	1. Install Apache
+		# //sudo apt-get update//
+		# //sudo apt-get install apache2//
+		Test:
+			http://server_IP_address/ [[+Server's Public IP Address]]
+			http://157.159.232.160/
+	2. Install MySQL
+		# sudo apt-get install mysql-server php5-mysql
+		# sudo mysql_install_db
+		# sudo mysql_secure_installation
+			Remove anonymous users? [Y/n] Y
+			Disallow root login remotely? [Y/n] Y
+			Remove test database and access to it? [Y/n] Y
+			Reload privilege tables now? [Y/n] Y
+	3. Install PHP
+		# sudo apt-get install php5 libapache2-mod-php5 php5-mcrypt
+		
+		# sudo nano /etc/apache2/mods-enabled/dir.conf
+			* Move the PHP index file highlighted above to the first position
+				<IfModule mod_dir.c>
+				    DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
+				</IfModule>
+			* CTRL-X , Y, ENTER 
+		# sudo service apache2 restart
+		
+		**Install PHP Modules** 
+		# apt-cache search php5-
+		# apt-cache show php5-cli
+		
+		sudo apt-get install php5-cli
+
+
+	4. Test PHP Processing on your Web Server
+		# sudo nano /var/www/html/info.php
+			* Copy inside the file:
+				<?php
+				phpinfo();
+				?>
+			* CTRL-X , Y, ENTER 
+			* Test
+				http://your_server_IP_address/info.php
+				http://157.159.232.160/info.php 
+		 
+		# sudo rm /var/www/html/info.php
+		
+	5. Install and Secure phpMyAdmin
+		a. Install phpMyAdmin
+			 # sudo apt-get install phpmyadmin apache2-utils
+				* Select Apache2 for the server
+				* Choose YES when asked about whether to Configure the database for phpmyadmin with dbconfig-common
+				* Enter your MySQL password when prompted
+				* Enter the password that you want to use to log into phpmyadmin
+			# sudo nano /etc/apache2/apache2.conf
+				* Add the phpmyadmin config to the file.
+					Include /etc/phpmyadmin/apache.conf
+				* CTRL-X , Y, ENTER 
+			# sudo service apache2 restart
+			Test: 
+				http://youripaddress/phpmyadmin
+				http://157.159.232.160/phpmyadmin 
+		b. Security
+			# sudo nano /etc/phpmyadmin/apache.conf 
+				* add the line “AllowOverride All” under “Directory Index”
+					<Directory /usr/share/phpmyadmin>
+					        Options FollowSymLinks
+					        DirectoryIndex index.php
+					        AllowOverride All
+					        [...]
+				* CTRL-X , Y, ENTER 
+			# sudo nano [[/usr/share/phpmyadmin/.htaccess]]
+				* paste the following text in:
+					AuthType Basic
+					AuthName "Restricted Files"
+					AuthUserFile /etc/apache2/.phpmyadmin.htpasswd
+					Require valid-user
+			# sudo htpasswd -c /etc/apache2/.phpmyadmin.htpasswd sqlncf
+			# sudo service apache2 restart
+			Test: 
+				http://youripaddress/phpmyadmin
+				http://157.159.232.160/phpmyadmin
+	
+	6. Create a SSL Certificate on Apache
+		a. Activate the SSL Module
+			# sudo a2enmod ssl
+			# sudo service apache2 restart
+		b. Create a New Directory
+			# sudo mkdir /etc/apache2/ssl 
+		c. Create a Self Signed SSL Certificate
+			# sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/apache2/ssl/apache.key -out [[/etc/apache2/ssl/apache.crt]]
+			
+				Country Name (2 letter code) [AU]:FR
+				State or Province Name (full name) [Some-State]:ILE DE FRANCE
+				Locality Name (eg, city) []:Evry
+				Organization Name (eg, company) [Internet Widgits Pty Ltd]:Institut Mines-Telecom
+				Organizational Unit Name (eg, section) []:RS2M
+				Common Name (e.g. server FQDN or YOUR name) []:WP-NCF                 
+				Email Address []:samer.machara@telecom-sudparis.eu
+		d. Set Up the Certificate
+			# sudo nano [[/etc/apache2/sites-available/default-ssl]]
+				* Add the lines:
+					ServerName 157.159.232.160:443
+					SSLEngine on
+					SSLCertificateFile /etc/apache2/ssl/apache.crt
+					SSLCertificateKeyFile /etc/apache2/ssl/apache.key
+				* CTRL-X , Y, ENTER 
+		* Activate the New Virtual Host
+			# sudo a2ensite default-ssl
+			   # sudo service apache2 reload
+			Test:
+				 https://youraddress
+				 https://157.159.232.160 
+
+	7. Configure vsftpd to Use SSL/TLS
+		a. Set Up vsftpd
+			# sudo apt-get install vsftpd
+		b. Configure vsftpd
+			# sudo nano /etc/vsftpd.conf
+				anonymous_enable=NO
+				local_enable=YES
+				write_enable=YES
+				chroot_local_user=YES
+		c. Create an FTP User
+			# sudo adduser ftpncf
+			# sudo chown root:root /home/ftpncf
+			# sudo mkdir /home/ftpncf/files
+			# sudo chown ftpncf:ftpncf /home/ftpncf/files
+		d. Configure SSL with vsftpd
+			# sudo openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem
+			# sudo nano /etc/vsftpd.conf
+				* Add the SSL Details to the vsftpd Configuration
+					rsa_cert_file=/etc/ssl/private/vsftpd.pem
+					rsa_private_key_file=/etc/ssl/private/vsftpd.pem
+					
+					ssl_enable=YES
+					allow_anon_ssl=NO
+					force_local_data_ssl=YES
+					force_local_logins_ssl=YES
+					
+					ssl_tlsv1=YES
+					ssl_sslv2=NO
+					ssl_sslv3=NO
+					
+					require_ssl_reuse=NO
+					ssl_ciphers=HIGH
+				* CTRL-X , Y, ENTER 
+			# sudo service vsftpd restart 
+
+		e. Access the FTP server
+			FileZilla:
+				* Open "Site Manager"
+				* Click on "New Site"
+				* Name the new configuration. Fill out the IP address. Under the "Encryption" drop down menu, select "Require explicit FTP over TLS".
+				* For "Logon Type", select "Ask for password". Fill in the ftp user you  created in the "User" field
+				* Click "Connect" 
+				* Accept the TLS certificate
+		* [[+Use SFTP to Securely Transfer Files with a Remote Server]]

@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-05-19T10:36:39+02:00
+
+====== list all super users ======
+Created Thursday 19 May 2016
+				
+				//grep -Po '^sudo.+:\K.*$' /etc/group//

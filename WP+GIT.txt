@@ -1,0 +1,106 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-05-19T10:16:02+02:00
+
+====== WP+GIT ======
+Created Thursday 19 May 2016
+
+===== WordPress: =====
+	[[+Prerequisites]]
+		* Initial server setup
+		* Install LAMP
+	[[+WordPress Setup]]	
+	Source: https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-on-ubuntu-14-04
+
+
+===== GIT =====
+	[[+Git Setup]]
+		Create an origin repository 
+
+
+===== GitLAB =====
+	**Prerequisites** 
+		# sudo apt-get install apache2 apache2-utils 
+		# sudo apt-get install git-core
+		
+==== Step One ====
+	**Set up with Apache as the CGI server**
+		# sudo a2enmod cgi alias env rewrite
+	**Create a repository**
+		use the following script in /var/git:
+		#sudo nano add_repo.sh
+			**...**
+				#!/bin/bash
+				 
+				WORKDIR=`pwd`
+				REPO=$1
+				 
+				# create dir
+				echo $REPO
+				mkdir -p $REPO
+				cd $REPO
+				 
+				# init repo
+				git init --bare
+				touch git-daemon-export-ok
+				cp hooks/post-update.sample hooks/post-update
+				git config http.receivepack true
+				git update-server-info
+				 
+				chown -R www-data:www-data .
+				 
+				# done
+				cd $WORKDIR
+			**...**
+			* CTRL-X , Y, ENTER 
+			sudo chmod +x add_repo.sh
+			sudo ./add_repo.sh test.git
+	
+	====== TODO: It doesn't work yet  ======
+	**Apache2 with Git Smart HTTP** 
+		# sudo mkdir /etc/gitserver/
+		# sudo nano /etc/gitserver/apache.conf
+			* Add the gitserver config to the file.
+				**...**
+				<VirtualHost *:80>
+				        ServerAdmin webmaster@localhost
+				 
+				        SetEnv GIT_PROJECT_ROOT /var/git
+				        SetEnv GIT_HTTP_EXPORT_ALL
+				        ScriptAlias /git/ /usr/lib/git-core/git-http-backend/
+				 
+				        Alias /git /var/git
+				        <Directory /usr/lib/git-core>
+				                Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+				                AllowOverride None
+				                Order allow,deny
+				                Allow from all
+				        </Directory>
+				 
+				        DocumentRoot /var/www
+				        <Directory />
+				                Options FollowSymLinks
+				                AllowOverride None
+				        </Directory>
+				        <Directory /var/www/>
+				                Options Indexes FollowSymLinks MultiViews
+				                AllowOverride None
+				#               Order allow,deny
+				#                allow from all
+				# for apache 2.4 (ubuntu 14.04+) use the following line instead of the 2 above:
+				               Require all granted
+				        </Directory>
+				 
+				        ErrorLog ${APACHE_LOG_DIR}/error.log
+				        LogLevel warn
+				        CustomLog ${APACHE_LOG_DIR}/access.log combined
+				</VirtualHost>
+				**...**
+			* CTRL-X , Y, ENTER 
+		# sudo nano /etc/apache2/apache2.conf
+			* Add the gitserver config to the file.
+				Include /etc/gitserver/apache.conf
+			* CTRL-X , Y, ENTER 
+		# sudo service apache2 restart
+
+====== Take a Snapshot of your Current Configuration ======
