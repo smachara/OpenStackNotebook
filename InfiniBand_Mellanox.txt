@@ -1,0 +1,36 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-06-08T15:34:57+02:00
+
+====== InfiniBand Mellanox ======
+Created Wednesday 08 June 2016
+
+===== Overview =====
+	This switch requires an InfiniBand compliant Subnet Manager
+	running from one of the hosts or Fabric Management software running on the switch.
+
+
+===== Internally Managed vs. Externally Managed =====
+IS5025 __upgraded to __ __Managed switch.__
+	RS232 cable DB9 to RJ45 included in the box to connect to host PC
+	for initial configuration of the switch. After initial configuration the
+	switch can be managed through the Ethernet using a remote connec-
+	tion.
+	This switch is capable of Fabric management for an unlimited num-
+	ber of nodes, with the purchase of Mellanox UFM.
+
+
+===== Configuring the Switch for the First Time =====
+	1. Connect the host PC RS232 connector to the CONSOLE port of the switch using the supplied
+	cable.
+	
+	2. Configure a serial terminal program
+		a. **Minicom**
+			Serial Terminal Program Configuration
+				Parameter 	Setting
+				Baud Rate 	9600
+				Data bits 		8
+				Stop bits 		1
+				Parity 		None
+				Flow Control 	None
+

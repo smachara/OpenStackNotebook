@@ -14,6 +14,7 @@ Created Thursday 26 May 2016
 		FLUSH PRIVILEGES;
 		exit
 		
+
 ===== Step Two =====
  **— Download WordPress**
 		# cd ~
@@ -42,22 +43,27 @@ Created Thursday 26 May 2016
 
 ===== Step Four =====
  **— Copy Files to the Document Root**
-	# sudo rsync -avP ~/wordpress/ /var/www/html/
-	# cd /var/www/html
+	# sudo rsync -avP ~/wordpress/ [[/var/www/html/wp/]]
+	# cd [[/var/www/html/wp]]
+	
 	# sudo chown -R wpncf:www-data *
-	# mkdir /var/www/html/wp-content/uploads
-	#sudo chown -R :www-data /var/www/html/wp-content/uploads
+	# mkdir /var/www/html/wp/wp-content/uploads
+	#sudo chown -R :www-data /var/www/html/wp/wp-content/uploads
 
 
 ===== Step Five =====
  **— Complete Installation through the Web Interface**
 	http://server_domain_name_or_IP
-	http://157.159.232.160  
+	http://157.159.232.160/wp   
 		* Site Title= NCF tips and tricks NCF-T&T
 		* Username = ncftnt	
 		* Password 	
 		* Your Email = samer.machara@telecom-sudparis.eu 	
 		* Search Engine Visibility = 	Discourage (true)
+
+**— WordPress Connection Information (FTP credentials)**
+	# sudo chown -R www-data:www-data /var/www/html/wp/
+
 
 ===== Step Six (Optional) =====
  **— Configure Pretty Permalinks for WordPress**
@@ -67,7 +73,7 @@ Created Thursday 26 May 2016
 						ServerAdmin webmaster@localhost
 						DocumentRoot /var/www/html
 						ServerName server_domain_name_or_IP
-						<Directory /var/www/html/>
+						<Directory /var/www/html/wp/>
 						        AllowOverride All
 						</Directory>
 						. . .
@@ -75,9 +81,9 @@ Created Thursday 26 May 2016
 			# sudo a2enmod rewrite
 			# sudo service apache2 restart
 		* **Create an .htaccess File**
-			# touch /var/www/html/.htaccess
-			# sudo chown :www-data /var/www/html/.htaccess
-			# chmod 664 /var/www/html/.htaccess
+			# touch /var/www/html/wp/.htaccess
+			# sudo chown :www-data /var/www/html/wp/.htaccess
+			# chmod 664 /var/www/html/wp/.htaccess
 			(WordPress to automatically update this file with rewrite rules)
 		* **Change the Permalink Settings in WordPress**
 			Settings menu, you can select Permalinks:
