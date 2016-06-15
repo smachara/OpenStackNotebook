@@ -1,0 +1,131 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-05-30T15:48:46+02:00
+
+====== GIT smart HTTP ======
+Created Monday 30 May 2016
+
+===== GIT smart HTTP =====
+	
+	**Prerequisites** 
+		# sudo apt-get install apache2 apache2-utils 
+		# sudo apt-get install git git-core
+
+
+==== Step One ====
+	**Set up with Apache as the CGI server**
+		# sudo a2enmod cgi alias env rewrite
+	**Create a repository**
+		use the following script in /var/git:
+		#sudo nano add_repo.sh
+			**...**
+				#!/bin/bash
+				 
+				WORKDIR=`pwd`
+				REPO=$1
+				 
+				# create dir
+				echo $REPO
+				mkdir -p $REPO
+				cd $REPO
+				 
+				# init repo
+				git init --bare
+				touch git-daemon-export-ok
+				cp hooks/post-update.sample hooks/post-update
+				git config http.receivepack true
+				git update-server-info
+				 
+				chown -R www-data:www-data .
+				 
+				# done
+				cd $WORKDIR
+			**...**
+			* CTRL-X , Y, ENTER 
+			
+			# sudo chgrp -R www-data /var/git
+			# sudo chmod +x add_repo.sh
+			# sudo ./add_repo.sh test.git
+	**Apache2 with Git Smart HTTP** 
+		# sudo mkdir /etc/gitserver/
+		# sudo ln -s [[/var/www/html/git]] /var/git
+		# sudo nano [[/etc/gitserver/apache.conf]]
+			* Add the gitserver config to the file.
+				**...**
+				<VirtualHost *:80>
+				        ServerAdmin webmaster@localhost
+				 
+				        SetEnv GIT_PROJECT_ROOT /var/git
+				        SetEnv GIT_HTTP_EXPORT_ALL
+				        ScriptAlias /git/ /usr/lib/git-core/git-http-backend/
+				 
+				        Alias /git /var/git
+				        <Directory /usr/lib/git-core>
+				                Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+				                AllowOverride None
+				                Order allow,deny
+				                Allow from all
+				        </Directory>
+				 
+				        DocumentRoot /var/www/html
+				        <Directory />
+				                Options FollowSymLinks
+				                AllowOverride None
+				        </Directory>
+				        <Directory /var/www/>
+				                Options Indexes FollowSymLinks MultiViews
+				                AllowOverride None
+				               Require all granted
+				        </Directory>
+				 
+				        ErrorLog ${APACHE_LOG_DIR}/error.log
+				        LogLevel warn
+				        CustomLog ${APACHE_LOG_DIR}/access.log combined
+				</VirtualHost>
+				
+				RewriteEngine On
+				RewriteCond %{QUERY_STRING} service=git-receive-pack [OR]
+				RewriteCond %{REQUEST_URI} /git-receive-pack$
+				RewriteRule ^/git/ - [E=AUTHREQUIRED]
+				
+				<Files "git-http-backend">
+				    AuthType Basic
+				    AuthName "Git Access"
+				    AuthUserFile /opt/git/.htpasswd
+				    Require valid-user
+				    Order deny,allow
+				    Deny from env=AUTHREQUIRED
+				    Satisfy any
+				</Files>
+				**...**
+				***
+				<Directory "/var/git">
+				        Allow from All
+				        Options +ExecCGI
+				        AllowOverride All
+				</Directory>
+				<VirtualHost *:80>
+				
+				        ServerAdmin webmaster@localhost
+				        DocumentRoot /var/git
+				
+				        SetEnv GIT_HTTP_EXPORT_ALL
+				        SetEnv GIT_PROJECT_ROOT /var/git
+				        ScriptAlias /git /usr/lib/git-core/git-http-backend
+				
+				</VirtualHost>
+				***
+			* CTRL-X , Y, ENTER 
+		# sudo nano /etc/apache2/apache2.conf
+			* Add the gitserver config to the file.
+				Include /etc/gitserver/apache.conf
+			* CTRL-X , Y, ENTER 
+		# htpasswd -c /var/git/.htpasswd schacon
+		# sudo service apache2 restart
+	**Test**
+
+
+====== TODO: It doesn't work yet ======
+samer@samerWS01:~$ git clone http://157.159.232.160/git/test.git
+Cloning into 'test'...
+fatal: repository 'http://157.159.232.160/git/test.git/' not found

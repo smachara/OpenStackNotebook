@@ -24,7 +24,7 @@ Created Thursday 26 May 2016
 			b. Copy the Public Key to the clipboard
 				local$ //cat ~/wpadminncf.pub//
 			c. Add Public Key to //wpncf //Remote User
-				# su - demo
+				# su - //wpncf//
      # //mkdir .ssh//
      # //chmod 700 .ssh//
 				# //nano .ssh/authorized_keys// 

@@ -1,0 +1,33 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-06-03T10:22:28+02:00
+
+====== Cumulonimbus ======
+Created Friday 03 June 2016
+
+===== Category Structure =====
+
+Uncategorized
+Non Network Information
+	Network Documentation Policy
+
+Backup procedures
+	Change Book
+
+Infrastructure
+	* Topology Diagrams
+		* Physical Network Diagram
+		* Logical Network Diagram
+	* Hardware 
+	* Software versions and proof of licenses
+	* Label system
+
+Monitoring
+
+Troubleshooting
+Server names, Roles and IP addresses
+
+
+
+
+

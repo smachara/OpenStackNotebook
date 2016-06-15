@@ -71,7 +71,7 @@ Created Friday 27 May 2016
 
 === Step Four ===
 	**Clone it down and push changes back up just as easily**
-		__$ git clone gitncf@157.159.232.160:/var/git/ncfNotebook.git__
+		__$ git clone gitncf@157.159.232.160:/var/git/ncfNotebook.git
 	**Test Push**
 			$ git config --global push.default simple
 			$ git config --global user.email "samer.machara@telecom-sudparis.eu"

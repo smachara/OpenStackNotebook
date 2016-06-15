@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-06-01T13:08:55+02:00
+
+====== Wordpress -  change Apache port guide ======
+Created Wednesday 01 June 2016
+Source: http://codex.wordpress.org/Moving_WordPress
+
+Moving changing your domain name or URLs (i.e. from http://example.com/wp to http://example.com:8082/wp) requires the following steps - in sequence. 
+
+Log in to the site you want to move and go to Settings > General, then change the URLs. (ie from http://example.com/ to http://example.com:8080/wp ) - save the settings and expect to see a 404 page. 
+
+:80 to :8082
+	# nano /etc/apache2/ports.conf
+	# nano /etc/apache2/sites-available/000-default.conf
+	# nano [[/etc/apache2/sites-enabled/000-default.conf]]
+	# nano /etc/gitserver/apache.conf
+	
